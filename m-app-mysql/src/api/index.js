@@ -4,7 +4,7 @@ import url from './url'
 axios.defaults.baseURL = 'http://localhost:3000'
 
 axios.interceptors.request.use((config) => {
-  config.headers.token = '666'
+  config.headers.token = localStorage.getItem('token')
   return config
 })
 
@@ -16,6 +16,7 @@ axios.interceptors.response.use((res) => {
     return res
   } else if (res.data.code === 403) {
     window.location.href = '/login'
+    return res
   }
 })
 

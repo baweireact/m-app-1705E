@@ -26,5 +26,6 @@ const common = async (config) => {
 }
 
 export default {
-  getUser: () => common({ url: url.getUser })
+  getUser: () => common({ url: url.getUser }),
+  deleteUser: (data) => common({ url: url.deleteUser, data, method: 'post' })
 }

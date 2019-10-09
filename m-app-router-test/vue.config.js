@@ -8,6 +8,7 @@ module.exports = {
     open: true,
     before(app) {
 
+      //使用中间件
       app.use(bodyPaser.json())
 
       app.get('/api/get_nav', (req, res) => {
@@ -18,6 +19,7 @@ module.exports = {
         })
       })
 
+      //tab切换时，更新列表数据里的数据
       app.get('/api/get_list', (req, res) => {
         let { id } = req.query
         let list = bookMallData.find(item => item.id == id).list
@@ -36,6 +38,7 @@ module.exports = {
         })
       })
 
+      //查
       app.get('/api/get_my_book', (req, res) => {
         res.send({
           code: 200,
@@ -44,6 +47,7 @@ module.exports = {
         })
       })
 
+      //增加一本书，增
       app.post('/api/add_book', (req, res) => {
         let { item } = req.body
         myBook.push(item)

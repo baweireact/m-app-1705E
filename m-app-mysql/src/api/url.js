@@ -1,3 +1,4 @@
 export default {
-  getUser: '/api/get_user'
+  getUser: '/api/get_user',
+  deleteUser: '/api/delete_user'
 }

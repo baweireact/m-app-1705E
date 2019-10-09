@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <SelectTimeInterval v-model="initData"></SelectTimeInterval>
+    <div class="m-result">{{result}}</div>
   </div>
 </template>
 
@@ -72,6 +73,17 @@ export default {
   },
   components: {
     SelectTimeInterval
+  },
+  computed: {
+    result() {
+      let dataClone = JSON.parse(JSON.stringify(this.initData));
+      let result = dataClone.filter(week => week.checked);
+      result.forEach(item => {
+        item.hours = item.hours.filter(hour => hour.checked);
+      });
+      result = JSON.stringify(result, null, 2)
+      return result
+    }
   }
 };
 </script>

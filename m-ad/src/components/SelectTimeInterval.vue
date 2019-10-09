@@ -6,7 +6,6 @@
         v-model="item.checked"
         @change="handleWeek(index, $event)"
       >{{item.week}}</el-checkbox>
-
       <span
         v-for="(hourItem,hourIndex) in item.hours"
         :key="hourIndex"
@@ -15,7 +14,6 @@
         @click="handleHour(index, hourIndex)"
       >{{hourItem.hour}}</span>
     </div>
-    <div>{{result}}</div>
   </div>
 </template>
 
@@ -26,11 +24,6 @@ export default {
     event: "change"
   },
   props: ["initData"],
-  data() {
-    return {
-      result: ""
-    };
-  },
   methods: {
     handleHour(index, hourIndex) {
       this.initData[index].hours[hourIndex].checked = !this.initData[index]
@@ -52,7 +45,6 @@ export default {
       }
 
       this.$emit("change", this.initData);
-      this.updateResult()
     },
     handleWeek(index, checked) {
       this.initData[index].hours.forEach(item => {
@@ -68,7 +60,6 @@ export default {
         this.initData[index].isIndeterminate = false;
       }
       this.$emit("change", this.initData);
-      this.updateResult()
     },
     updateResult() {
       let dataClone = JSON.parse(JSON.stringify(this.initData));

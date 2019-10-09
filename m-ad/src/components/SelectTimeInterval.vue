@@ -15,71 +15,20 @@
         @click="handleHour(index, hourIndex)"
       >{{hourItem.hour}}</span>
     </div>
+    <div>{{result}}</div>
   </div>
 </template>
 
 <script>
 export default {
+  model: {
+    prop: "initData",
+    event: "change"
+  },
+  props: ["initData"],
   data() {
     return {
-      initData: [
-        {
-          id: 0,
-          week: "星期一",
-          checked: true,
-          isIndeterminate: false,
-          hours: [
-            {
-              hour: 1,
-              checked: true
-            },
-            {
-              hour: 2,
-              checked: true
-            },
-            {
-              hour: 3,
-              checked: true
-            },
-            {
-              hour: 4,
-              checked: true
-            },
-            {
-              hour: 5,
-              checked: true
-            }
-          ]
-        },
-        {
-          id: 1,
-          week: "星期二",
-          checked: true,
-          isIndeterminate: false,
-          hours: [
-            {
-              hour: 1,
-              checked: true
-            },
-            {
-              hour: 2,
-              checked: true
-            },
-            {
-              hour: 3,
-              checked: true
-            },
-            {
-              hour: 4,
-              checked: true
-            },
-            {
-              hour: 5,
-              checked: true
-            }
-          ]
-        }
-      ]
+      result: ""
     };
   },
   methods: {
@@ -101,6 +50,9 @@ export default {
       } else {
         this.initData[index].checked = true;
       }
+
+      this.$emit("change", this.initData);
+      this.updateResult()
     },
     handleWeek(index, checked) {
       this.initData[index].hours.forEach(item => {
@@ -115,9 +67,18 @@ export default {
       } else {
         this.initData[index].isIndeterminate = false;
       }
+      this.$emit("change", this.initData);
+      this.updateResult()
+    },
+    updateResult() {
+      let dataClone = JSON.parse(JSON.stringify(this.initData));
+      let result = dataClone.filter(week => week.checked);
+      result.forEach(item => {
+        item.hours = item.hours.filter(hour => hour.checked);
+      });
+      this.result = result;
     }
-  },
-  updated() {}
+  }
 };
 </script>
 

@@ -6,7 +6,7 @@ Page({
    */
   data: {
     currentIndex: 0,
-    navList: [
+    nav: [
       {
         id: 0,
         title: '武侠'
@@ -20,5 +20,12 @@ Page({
         title: '科幻'
       }
     ]
+  },
+
+  handleNav(e) {
+    let { index } = e.target.dataset
+    this.setData({
+      currentIndex: index
+    })
   }
 })

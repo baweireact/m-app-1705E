@@ -45,8 +45,6 @@ export default {
       } else {
         this.initData[index].isIndeterminate = false
       }
-
-
     },
     handleWeek(index, checked) {
       this.initData[index].hours.forEach(item => {

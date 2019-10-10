@@ -1,0 +1,9 @@
+/* miniprogram/pages/index.wxss */
+view{margin: 10px;}
+.m-input{padding: 10px; height: 100rpx; border: 1px solid #dddddd;}
+.m-sum{color: red;}
+
+
+
+
+

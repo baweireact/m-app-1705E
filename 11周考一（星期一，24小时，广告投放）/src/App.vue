@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import SelectTimeInterval from './components/SelectTimeInterval'
+import SelectTimeInterval from "./components/SelectTimeInterval";
 
 export default {
   data() {
@@ -69,21 +69,21 @@ export default {
           ]
         }
       ]
-    }
-  },
-  computed: {
-    result() {
-      return JSON.stringify(this.initData, null, 2)
-    }
+    };
   },
   components: {
     SelectTimeInterval
   },
-  methods: {
-    handleInput(e) {
-      console.log(e)
-      this.username = e.target.value
+  computed: {
+    result() {
+      let dataClone = JSON.parse(JSON.stringify(this.initData));
+      let result = dataClone.filter(week => week.checked);
+      result.forEach(item => {
+        item.hours = item.hours.filter(hour => hour.checked);
+      });
+      result = JSON.stringify(result, null, 2)
+      return result
     }
   }
-}
+};
 </script>

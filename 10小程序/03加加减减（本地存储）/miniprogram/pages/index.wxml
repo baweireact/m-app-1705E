@@ -1,0 +1,7 @@
+<view>
+  <text class="m-count">{{count}}</text>
+  <view>
+    <button class="m-btn" bindtap="handleAdd">加</button>
+    <button class="m-btn" bindtap="handleSub">减</button>
+  </view>
+</view>

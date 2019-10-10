@@ -1,10 +1,9 @@
 <template>
   <div>
-    <div v-for="(item, index) in initData" :key="item.id">
-      <el-checkbox :indeterminate="item.isIndeterminate" v-model="item.checked"  @change="handleWeek(index, $event)">{{item.week}}</el-checkbox>
-
+    <div v-for="(item, index) in initData" :key="index">
+      <el-checkbox v-model="item.checked" :indeterminate="item.isIndeterminate" @change="handleWeek(index, $event)">{{item.week}}</el-checkbox>
       <span
-        v-for="(hourItem,hourIndex) in item.hours"
+        v-for="(hourItem, hourIndex) in item.hours"
         :key="hourIndex"
         class="m-hour"
         :class="{active: hourItem.checked}"
@@ -16,85 +15,43 @@
 
 <script>
 export default {
-  data() {
-    return {
-      initData: [
-        {
-          id: 0,
-          week: "星期一",
-          checked: true,
-          isIndeterminate: false,
-          hours: [
-            {
-              hour: 1,
-              checked: true
-            },
-            {
-              hour: 2,
-              checked: true
-            },
-            {
-              hour: 3,
-              checked: true
-            },
-            {
-              hour: 4,
-              checked: true
-            },
-            {
-              hour: 5,
-              checked: true
-            }
-          ]
-        },
-        {
-          id: 1,
-          week: "星期二",
-          checked: true,
-          isIndeterminate: false,
-          hours: [
-            {
-              hour: 1,
-              checked: true
-            },
-            {
-              hour: 2,
-              checked: true
-            },
-            {
-              hour: 3,
-              checked: true
-            },
-            {
-              hour: 4,
-              checked: true
-            },
-            {
-              hour: 5,
-              checked: true
-            }
-          ]
-        }
-      ]
-    };
+  model: {
+    prop: "initData"
   },
+  props: ["initData"],
   methods: {
     handleHour(index, hourIndex) {
-      this.initData[index].hours[hourIndex].checked = !this.initData[index]
-        .hours[hourIndex].checked;
-      //flg这变量
-      let flg = false
-      let count = this.initData[index].hours.filter(item => item.checked === false).length
-      if (this.initData[index].hours.length > count && count > 0) {
-        flg = true
-      } 
-      this.initData[index].checked = !(this.initData[index].hours.length === count)
-      this.initData[index].isIndeterminate = flg
+      this.initData[index].hours[hourIndex].checked = !this.initData[index].hours[hourIndex].checked
+
+      console.log(this.initData[index].hours.length)
+      console.log(this.initData[index].hours.filter(item => {
+        return !item.checked
+      }).length)
+
+      //hour等false的数量
+      let count = this.initData[index].hours.filter(item => {
+        return !item.checked
+      }).length
+
+      if (this.initData[index].hours.length === count) {
+        this.initData[index].checked = false
+      } else {
+        this.initData[index].checked = true
+      }
+
+      //控制半选状态
+      if (count > 0 && count < this.initData[index].hours.length) {
+        this.initData[index].isIndeterminate = true
+      } else {
+        this.initData[index].isIndeterminate = false
+      }
+
+
     },
     handleWeek(index, checked) {
       this.initData[index].hours.forEach(item => {
-        item.checked = checked;
-      });
+        item.checked = checked
+      })
     }
   }
 };

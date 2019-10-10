@@ -1,0 +1,3 @@
+/* miniprogram/pages/index.wxss */
+.m-count{display: inline-block; margin: 5px; color: red;font-size: 26px;}
+.m-btn{display: inline-block; margin: 5px;width: 100px;background-color: #dddddd;}

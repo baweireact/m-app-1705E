@@ -21,7 +21,7 @@
 export default {
   model: {
     prop: "initData",
-    //event: "change"
+    event: "change"
   },
   props: ["initData"],
   methods: {
@@ -32,24 +32,43 @@ export default {
       let count = this.initData[index].hours.filter(
         item => item.checked === false
       ).length;
-
       if (this.initData[index].hours.length > count && count > 0) {
         this.initData[index].isIndeterminate = true;
       } else {
         this.initData[index].isIndeterminate = false;
       }
 
-      this.initData[index].checked = !(this.initData[index].hours.length === count);
+      if (this.initData[index].hours.length === count) {
+        this.initData[index].checked = false;
+      } else {
+        this.initData[index].checked = true;
+      }
 
+      this.$emit("change", this.initData);
     },
     handleWeek(index, checked) {
       this.initData[index].hours.forEach(item => {
         item.checked = checked;
       });
+
+      let count = this.initData[index].hours.filter(
+        item => item.checked === false
+      ).length;
+      if (this.initData[index].hours.length > count && count > 0) {
+        this.initData[index].isIndeterminate = true;
+      } else {
+        this.initData[index].isIndeterminate = false;
+      }
+      this.$emit("change", this.initData);
+    },
+    updateResult() {
+      let dataClone = JSON.parse(JSON.stringify(this.initData));
+      let result = dataClone.filter(week => week.checked);
+      result.forEach(item => {
+        item.hours = item.hours.filter(hour => hour.checked);
+      });
+      this.result = result;
     }
-  },
-  updated() {
-    //this.$emit("change", this.initData);
   }
 };
 </script>

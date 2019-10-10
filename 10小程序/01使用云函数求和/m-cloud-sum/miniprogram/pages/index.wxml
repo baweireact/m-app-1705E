@@ -1,0 +1,14 @@
+<!--miniprogram/pages/index.wxml-->
+<view>
+  <input class="m-input" data-field="a" bindinput="handleInput" placeholder="请输入第一个数" focus />
+</view>
+<view>
+  <input class="m-input" data-field="b" bindinput="handleInput" placeholder="请输入第二个数" />
+</view>
+<view>
+  <text>和:</text>
+  <text class="m-sum">{{sum}}</text>
+</view>
+<view>
+  <button type="primary" bindtap="handleSum">求和</button>
+</view>

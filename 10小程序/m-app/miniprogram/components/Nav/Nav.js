@@ -21,9 +21,7 @@ Component({
   methods: {
     handleNav(e) {
       let { index } = e.target.dataset
-      this.setData({
-        currentIndex: index
-      })
+      this.triggerEvent('onNav', { index })
     }
   }
 })

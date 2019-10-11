@@ -20,5 +20,12 @@ Page({
         title: '科幻'
       }
     ]
+  },
+
+  handleNav(e) {
+    let { index } = e.detail
+    this.setData({
+      currentIndex: index
+    })
   }
 })

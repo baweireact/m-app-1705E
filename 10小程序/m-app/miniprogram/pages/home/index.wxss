@@ -1,0 +1,3 @@
+/* miniprogram/pages/index.wxss */
+.m-nav-item{display: inline-block;margin: 5px; color: #333333;}
+.m-nav-item.active{color: red;}

@@ -18,11 +18,6 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    handleDetail(e) {
-      let { id } = e.target.dataset
-      wx.navigateTo({
-        url: `/pages/detail/detail?id=${id}`,
-      })
-    }
+
   }
 })

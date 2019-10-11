@@ -1,10 +1,11 @@
-// components/BookList/BookList.js
+// components/Nav/Nav.js
 Component({
   /**
    * 组件的属性列表
    */
   properties: {
-    currentList: Array
+    navList: Array,
+    currentIndex: Number
   },
 
   /**
@@ -18,11 +19,9 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    handleDetail(e) {
-      let { id } = e.target.dataset
-      wx.navigateTo({
-        url: `/pages/detail/detail?id=${id}`,
-      })
+    handleNav(e) {
+      let { index, id } = e.target.dataset
+      this.triggerEvent('onNav', { index, id })
     }
   }
 })

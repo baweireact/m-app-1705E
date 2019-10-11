@@ -1,0 +1,4 @@
+<!--miniprogram/pages/detail/detail.wxml-->
+<view>
+  <image src="{{book.avatar}}" mode="aspectFit" class="m-img"></image>
+</view>

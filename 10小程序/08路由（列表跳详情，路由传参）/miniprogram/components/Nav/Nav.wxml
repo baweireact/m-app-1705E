@@ -1,0 +1,3 @@
+<text class="m-nav-item {{index === currentIndex ? 'active': ''}}" wx:for="{{navList}}" bindtap="handleNav" data-index="{{index}}" data-id="{{item.id}}" wx:key="{{index}}">
+    {{item.title}}
+  </text>

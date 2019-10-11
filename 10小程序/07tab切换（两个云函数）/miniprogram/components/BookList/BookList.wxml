@@ -2,6 +2,5 @@
 <view>
   <view wx:for="{{currentList}}" wx:key="{{index}}">
     {{item.title}}
-    <button size="mini" type="primary" bind:tap="handleDetail" data-id="{{item.id}}">详情</button>
   </view>
 </view>

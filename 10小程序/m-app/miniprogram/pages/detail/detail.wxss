@@ -1,0 +1,2 @@
+/* miniprogram/pages/detail/detail.wxss */
+.m-img{width: 100px;height: 120px}

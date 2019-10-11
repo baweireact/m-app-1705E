@@ -6,13 +6,27 @@ Page({
    */
   data: {
     currentIndex: 0,
-    navList: []
+    navList: [],
+    currentList: []
   },
 
   handleNav(e) {
-    let { index } = e.detail
+    let { index, id } = e.detail
     this.setData({
       currentIndex: index
+    })
+
+    wx.cloud.callFunction({
+      name: 'api_book_list',
+      data: {
+        id
+      }
+    }).then(res => {
+      if (res.result.code === 200) {
+        this.setData({
+          currentList: res.result.data
+        })
+      }
     })
   },
 
@@ -24,6 +38,20 @@ Page({
       if (res.result.code === 200) {
         this.setData({
           navList: res.result.data
+        })
+      }
+    })
+
+    wx.cloud.callFunction({
+      name: 'api_book_list',
+      data: {
+        id: 0
+      }
+    }).then(res => {
+      if (res.result.code === 200) {
+        console.log(res)
+        this.setData({
+          currentList: res.result.data
         })
       }
     })

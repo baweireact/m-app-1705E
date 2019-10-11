@@ -1,5 +1,6 @@
 {
   "usingComponents": {
-    "Nav": "/components/Nav/Nav"
+    "Nav": "/components/Nav/Nav",
+    "BookList": "/components/BookList/BookList"
   }
 }

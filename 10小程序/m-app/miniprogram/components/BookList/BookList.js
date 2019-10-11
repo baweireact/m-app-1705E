@@ -1,11 +1,10 @@
-// components/Nav/Nav.js
+// components/BookList/BookList.js
 Component({
   /**
    * 组件的属性列表
    */
   properties: {
-    navList: Array,
-    currentIndex: Number
+    currentList: Array
   },
 
   /**
@@ -19,9 +18,6 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    handleNav(e) {
-      let { index, id } = e.target.dataset
-      this.triggerEvent('onNav', { index, id })
-    }
+
   }
 })

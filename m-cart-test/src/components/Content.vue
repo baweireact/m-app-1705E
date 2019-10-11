@@ -12,7 +12,6 @@ export default {
   props: ["currentList"],
   methods: {
     handleAdd(item) {
-      console.log(item)
       let myCart = localStorage.getItem('myCart') ? JSON.parse(localStorage.getItem('myCart')) : []
       myCart.push(item)
       localStorage.setItem('myCart', JSON.stringify(myCart))

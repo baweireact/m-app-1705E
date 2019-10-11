@@ -4,9 +4,9 @@
 .m-footer{display: flex; height: 50px;border-top: 1px solid #dddddd;}
 .m-nav-item{flex:1;text-align: center;line-height: 50px;text-decoration: none;}
 .m-nav-item.router-link-active{color: red;}
-.m-index{display: flex;height: 100%;overflow-y: auto;}
+.m-index{display: flex;height: 100%;}
 .m-index-sidebar{width: 150px;border-right: 1px solid #dddddd;}
-.m-index-content{flex:1;height: 100%;overflow-y: auto;}
+.m-index-content{flex:1;overflow-y: auto;}
 .m-sidebar-item{text-align: center;cursor: pointer;color: #333333;}
 .m-sidebar-item.active{color: red;}
 .m-img{display: inline-block;width: 120px;height: 120px;}

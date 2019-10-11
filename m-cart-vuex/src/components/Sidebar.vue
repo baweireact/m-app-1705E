@@ -5,25 +5,22 @@
       :key="index"
       class="m-sidebar-item"
       :class="{active: index === currentIndex}"
-      @click="handleNav(index)"
+      @click="setIndex({index})"
     >{{item.categoryName}}</div>
   </div>
 </template>
 
 <script>
+import { mapState, mapMutations } from 'vuex'
+
 export default {
   computed: {
-    list() {
-      return this.$store.state.list;
-    },
-    currentIndex() {
-      return this.$store.state.currentIndex;
-    }
+    ...mapState(['list', 'currentIndex']),
   },
   methods: {
-    handleNav(index) {
-      this.$store.commit({ type: 'setIndex', index })
-    }
+    ...mapMutations({
+      setIndex: 'setIndex'
+    })
   }
 };
 </script>

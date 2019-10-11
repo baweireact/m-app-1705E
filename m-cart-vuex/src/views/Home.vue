@@ -10,14 +10,18 @@
 <script>
 import Sidebar from '../components/Sidebar'
 import Content from '../components/Content'
+import { mapActions } from 'vuex'
 
 export default {
   components: {
     Sidebar,
     Content
   },
+  methods: {
+    ...mapActions(['getData'])
+  },
   mounted() {
-    this.$store.dispatch({ type: 'getData' })
+    this.getData()
   }
 }
 </script>

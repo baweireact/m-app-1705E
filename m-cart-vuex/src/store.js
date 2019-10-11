@@ -8,7 +8,8 @@ export default new Vuex.Store({
   state: {
     currentIndex: 0,
     list: [],
-    currentList: []
+    currentList: [],
+    myCart: []
   },
   mutations: {
     setList(state, payload) {
@@ -18,6 +19,10 @@ export default new Vuex.Store({
     setIndex(state, payload) {
       state.currentIndex = payload.index
       state.currentList = state.list[payload.index].spuList
+    },
+    setMyCart(state, payload) {
+      state.myCart = payload.myCart
+      localStorage.setItem('myCart', JSON.stringify(payload.myCart))
     }
   },
   actions: {
@@ -26,7 +31,7 @@ export default new Vuex.Store({
         url: '/api/list'
       }).then(res => {
         if (res.data.code === 200) {
-          commit({type: 'setList', list: res.data.data})
+          commit({ type: 'setList', list: res.data.data })
         }
       })
     }

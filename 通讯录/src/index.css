@@ -1,0 +1,20 @@
+.m-list-wrap{ position: absolute;top: 0;left: 0;right: 0;bottom: 0;}
+.m-list{height: 100%;overflow-y: auto;}
+.m-sidebar{position: absolute;top: 0;right: 0; width: 20px;height: 100%;}
+.m-nav{position: absolute;top: 50%;transform: translateY(-50%)}
+.m-nav-item{width: 20px;height: 20px;line-height: 20px; text-align: center;color: #333333;cursor: pointer;border-radius: 10px;}
+.m-nav-item.active{background: green;color: #ffffff;}
+.m-list-key{position:sticky;top: 0; padding: 0 0 0 10px; line-height: 20px;background: #dddddd;}
+.m-car-item{display: flex}
+.m-car-img{width: 50px;height: 50px;}
+.m-car-name{flex:1; height: 50px;line-height: 50px;margin: 0 0 0 10px;border-bottom: 1px solid #dddddd;}
+
+
+
+
+
+
+
+
+
+

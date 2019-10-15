@@ -10,9 +10,6 @@ class BookList extends Component {
   }
 
   handleAdd(item) {
-    if (!localStorage.getItem('username')) {
-      this.props.history.push('/login')
-    }
     axios({
       url: '/api/add_book',
       data: {

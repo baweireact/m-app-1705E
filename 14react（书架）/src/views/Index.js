@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Switch, Route, NavLink, Redirect } from 'react-router-dom'
+import { Switch, Route, NavLink } from 'react-router-dom'
 import Home from './Home'
 import MyBook from './MyBook'
 import Detail from './Detail'
@@ -14,13 +14,7 @@ class Index extends Component {
         </div>
         <Switch>
           <Route exact path="/index/home" component={Home}></Route>
-          <Route path="/index/my_book" render={() => {
-            if (localStorage.getItem('username')) {
-              return <MyBook></MyBook>
-            } else {
-              return <Redirect to="/login"></Redirect>
-            }
-          }}></Route>
+          <Route path="/index/my_book" component={MyBook}></Route>
           <Route path="/index/home/detail/:id" component={Detail}></Route>
         </Switch>
       </div>

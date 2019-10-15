@@ -17,7 +17,7 @@ const Login = (props) => {
       method: 'post'
     }).then(res => {
       if (res.data.code === 200) {
-        props.history.push('/index')
+        props.history.push('/index/home')
       } else {
         alert(res.data.message)
       }

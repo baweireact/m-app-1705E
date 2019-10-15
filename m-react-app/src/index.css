@@ -3,6 +3,8 @@ body {margin: 0;}
 .m-nav-item.active{color: red;}
 .m-add-btn{display: none;}
 .m-add-btn.active{display: inline-block;}
+.m-loading-wrap{position: fixed;top: 0;left: 0;right: 0;bottom: 0;background: red;}
+.m-loading{position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);}
 
 
 

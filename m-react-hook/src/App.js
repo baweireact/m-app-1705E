@@ -1,21 +1,24 @@
-import React, { useRef, useEffect } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
+
+//自定义hook，获取上一轮的state
+const usePrevious = (value) => {
+  const ref = useRef()
+  useEffect(() => {
+    ref.current = value
+  })
+  return ref.current
+}
 
 const App = () => {
-  const inputEl = useRef(null)
+  const [ count, setCount ] = useState(0)
 
-  const handleFocus = () => {
-    inputEl.current.focus()
-  }  
-
-  useEffect(() => {
-    inputEl.current.focus()
-  }, [])
+  const prevCount = usePrevious(count)
 
   return (
     <div>
-      <input ref={inputEl}></input>
+      {count}, {prevCount}
       <div>
-        <button onClick={handleFocus}>获取焦点</button>
+        <button onClick={() => setCount(count + 1)}>加</button>
       </div>
     </div>
   )

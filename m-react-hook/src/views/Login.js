@@ -18,6 +18,7 @@ const Login = (props) => {
     }).then(res => {
       if (res.data.code === 200) {
         props.history.push('/index/home')
+        localStorage.setItem('username', res.data.data.username)
       } else {
         alert(res.data.message)
       }

@@ -6,25 +6,19 @@ class MyBook extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      selected: [],
-      selectAll: false,
+      selectAll: false
     }
   }
 
-  handleSelected(id, e) {
-    let { selected } = this.state
+  handleSelect(index, e) {
     let { myBook } = this.props
-    console.log(id, e.target.checked)
-    let index = selected.findIndex(item => item === id)
-    if (e.target.checked) {
-      selected.push(id)
-    } else {
-      selected.splice(index, 1)
-    }
+    myBook[index].checked = e.target.checked
+    const count = myBook.filter(item => item.checked).length
     this.setState({
-      selected,
-      selectAll: selected.length === myBook.length
+      selectAll: count === myBook.length
     })
+
+    this.props.onSetState('myBook', myBook)
   }
 
   handleDelete(ids) {
@@ -42,11 +36,12 @@ class MyBook extends Component {
   }
 
   handleDeleteMore() {
-    let { selected } = this.state
+    let { myBook } = this.props
+    let ids = myBook.filter(item => item.checked).map(item => item.id)
     axios({
       url: '/api/delete_book',
       data: {
-        ids: selected
+        ids
       },
       method: 'post'
     }).then(res => {
@@ -61,16 +56,50 @@ class MyBook extends Component {
     this.setState({
       selectAll: e.target.checked
     })
-    if (e.target.checked) {
-      let selected = myBook.map(item => item.id)
-      this.setState({
-        selected
-      })
-    } else {
-      this.setState({
-        selected: []
-      })
+    myBook.forEach(item => {
+      item.checked = e.target.checked
+    })
+    this.props.onSetState('myBook', myBook)
+  }
+
+  handleAdd(index) {
+    let { myBook } = this.props
+    myBook[index].count = myBook[index].count + 1
+    this.props.onSetState('myBook', myBook)
+  }
+
+  handleSub(index) {
+    let { myBook } = this.props
+    if (myBook[index].count > 1) {
+      myBook[index].count = myBook[index].count - 1
+      this.props.onSetState('myBook', myBook)
     }
+  }
+
+  total(myBook) {
+    let totalPrice = 0, totalCount = 0
+    myBook.filter(item => item.checked).forEach(item => {
+      totalCount += item.count
+      totalPrice += item.count * item.price
+    })
+    return {
+      totalCount,
+      totalPrice
+    }
+  }
+
+  componentDidUpdate() {
+    let { myBook } = this.props
+    axios({
+      url: '/api/update_my_book',
+      data: {
+        myBookNew: myBook
+      },
+      method: 'post'
+    }).then(res => {
+      if (res.data.code === 200) {
+      }
+    })
   }
 
   componentDidMount() {
@@ -78,28 +107,38 @@ class MyBook extends Component {
       url: '/api/get_my_book'
     }).then(res => {
       if (res.data.code === 200) {
-        this.props.onSetState('myBook', res.data.data)
+        let myBook = res.data.data
+        this.props.onSetState('myBook', myBook)
+        const count = myBook.filter(item => item.checked).length
+        this.setState({
+          selectAll: count === myBook.length
+        })
       }
     })
   }
 
   render() {
     let { myBook } = this.props
-    let { selected, selectAll } = this.state
+    let { selectAll } = this.state
 
-    let myBookDom = myBook.map(item => (
+    let myBookDom = myBook.map((item, index) => (
       <div key={item.id}>
-        <input type="checkbox" checked={ selected.findIndex(id => id === item.id) >= 0 ? true : false } onChange={this.handleSelected.bind(this, item.id)}/>
-        {item.title}
+        <input type="checkbox" checked={ item.checked } onChange={this.handleSelect.bind(this, index)}/>
+        {item.title}，价格：{item.price}元<button onClick={this.handleSub.bind(this, index)}>-</button>{item.count}<button onClick={this.handleAdd.bind(this, index)}>+</button>
         <button onClick={this.handleDelete.bind(this, [item.id])}>删除</button>
       </div>
     ))
+
+    let total = this.total(myBook)
 
     return (
       <div>
         <input type="checkbox" checked={selectAll} onChange={this.handleSelectAll.bind(this)}></input>全选
         <button onClick={this.handleDeleteMore.bind(this)}>删除</button>
         {myBookDom}
+        <div>
+          总价：{total.totalPrice}元,总数：{total.totalCount}
+        </div>
       </div>
     )
   }
@@ -107,7 +146,8 @@ class MyBook extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    myBook: state.myBook
+    myBook: state.myBook,
+    a: [], //容错用的，可以是空数组，或空对象，删除这个加加减减将失效，原因未知！！！另一种解决办法是dispatch前深拷贝myBook
   }
 }
 

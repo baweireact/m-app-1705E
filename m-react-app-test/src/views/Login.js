@@ -34,7 +34,7 @@ export default class Login extends Component {
       }).then(res => {
         if (res.data.code === 200) {
           localStorage.setItem('username', res.data.data.username)
-          this.props.history.push('/index')
+          this.props.history.push('/index/home')
         } else {
           alert(res.data.message)
         }

@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import axios from 'axios'
+import LazyLoad from 'react-lazy-load'
 
 class BookList extends Component {
 
@@ -10,6 +11,8 @@ class BookList extends Component {
   }
 
   handleAdd(item) {
+    item.checked = true
+    item.count = 1
     if (!localStorage.getItem('username')) {
       this.props.history.push('/login')
     }
@@ -38,8 +41,11 @@ class BookList extends Component {
 
     let listDom = contentList.map(item => (
       <div key={item.id}>
-        {item.title}<button onClick={this.handleDetail.bind(this, item.id)}>详情</button>
-        <button onClick={this.handleAdd.bind(this, item)} className={'m-add-btn ' + (item.is_in_my_book ? "": 'active')}>收藏</button>
+        <LazyLoad height={300} onContentVisible={() => console.log(item.title)}>
+          <img src={item.avatar} ></img>
+        </LazyLoad>
+        书名：{item.title}价格：{item.price}元<button onClick={this.handleDetail.bind(this, item.id)}>详情</button>
+        <button onClick={this.handleAdd.bind(this, item)} className={'m-add-btn ' + (item.is_in_my_book ? "" : 'active')}>收藏</button>
       </div>
     ))
 

@@ -9,6 +9,7 @@ export default class Router extends Component {
       <div>
         <Switch>
           <Redirect from="/" to="/login" exact></Redirect>
+          <Redirect from="/index" to="/index/home" exact></Redirect>
           <Route path="/login" component={Login}></Route>
           <Route path="/index" component={Index}></Route>
         </Switch>

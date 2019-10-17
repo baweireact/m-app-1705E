@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import LazyLoad from 'react-lazy-load'
 
 export default class Detail extends Component {
   constructor(props) {
@@ -12,6 +11,8 @@ export default class Detail extends Component {
 
   handleAdd() {
     let { detail } = this.state
+    detail.checked = true
+    detail.count = 1
     axios({
       url: '/api/add_book',
       data: {
@@ -51,9 +52,7 @@ export default class Detail extends Component {
     let { detail } = this.state
     return (
       <div>
-        <LazyLoad height={300} onContentVisible={() => console.log('look ma I have been lazyloaded!')}>
-          <img src={detail.avatar} ></img>
-        </LazyLoad>
+        <img src={detail.avatar} ></img>
         <button className={'m-add-btn ' + (detail.is_in_my_book ? "": 'active')} onClick={this.handleAdd.bind(this)}>收藏</button>
       </div>
     )

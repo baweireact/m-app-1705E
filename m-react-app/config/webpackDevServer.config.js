@@ -192,6 +192,7 @@ module.exports = function(proxy, allowedHost) {
         })
       })
 
+      //删除
       app.post('/api/delete_book', (req, res) => {
         let { ids } = req.body
         myBook = myBook.filter(item => !ids.find(id => id === item.id))
@@ -199,6 +200,17 @@ module.exports = function(proxy, allowedHost) {
           code: 200,
           data: myBook,
           message: '删除成功'
+        })
+      })
+
+      //更新书包
+      app.post('/api/update_my_book', (req, res) => {
+        let { myBookNew } = req.body
+        myBook = myBookNew
+        res.send({
+          code: 200,
+          data: myBook,
+          message: '更新成功'
         })
       })
     },

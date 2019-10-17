@@ -9,6 +9,8 @@ const fs = require('fs');
 const bodyParser = require('body-parser')
 const { bookNavData, bookMallData } = require('./data.js')
 
+let bookList = []
+
 //用户列表
 const userList = [{
   id: '001',
@@ -117,6 +119,7 @@ module.exports = function (proxy, allowedHost) {
       // https://github.com/facebook/create-react-app/issues/2272#issuecomment-302832432
       app.use(noopServiceWorkerMiddleware());
 
+      //使用中间件，支持post请求
       app.use(bodyParser.json())
 
       //登录
@@ -163,6 +166,58 @@ module.exports = function (proxy, allowedHost) {
           code: 200,
           data: list,
           message: '列表'
+        })
+      })
+
+      //详情
+      app.get('/api/detail', (req, res) => {
+        let { id } = req.query
+        let detail
+        bookMallData.forEach(listItem => {
+          listItem.list.forEach(book => {
+            if (book.id == id) {
+              detail = book
+            }
+          })
+        })
+
+        res.send({
+          code: 200,
+          data: detail,
+          message: '详情'
+        })
+      })
+
+      //加入书包
+      app.post('/api/add', (req, res) => {
+        let { item } = req.body
+        bookList.push(item)
+        res.send({
+          code: 200,
+          data: bookList,
+          message: '添加成功'
+        })
+      })
+
+      //获取书包里的数据
+      app.get('/api/get_book_list', (req, res) => {
+        res.send({
+          code: 200,
+          data: bookList,
+          message: '书包'
+        })
+      })
+
+      //删除一个或多个
+      app.post('/api/delete', (req, res) => {
+        let { ids } = req.body
+        console.log(ids)
+        console.log(bookList)
+        bookList = bookList.filter(item => !ids.find(id => id === item.id))
+        res.send({
+          code: 200,
+          data: bookList,
+          message: '删除成功'
         })
       })
     },

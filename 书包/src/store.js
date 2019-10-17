@@ -3,7 +3,9 @@ import { createStore } from 'redux'
 const defaultState = {
   navList: [],
   currentIndex: 0,
-  currentId: 0
+  currentId: 0,
+  currentList: [],
+  bookList: []
 }
 
 const reducer = (state = defaultState, action) => {

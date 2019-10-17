@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import axios from 'axios'
+import Api from '../api'
 
 export default class Login extends Component {
   constructor(props) {
@@ -24,14 +24,7 @@ export default class Login extends Component {
     if (username.trim() === '') {
       alert('用户名不能为空')
     } else {
-      axios({
-        url: '/api/login',
-        data: {
-          username,
-          password
-        },
-        method: 'post'
-      }).then(res => {
+      Api.login({ username, password}).then(res => {
         if (res.data.code === 200) {
           localStorage.setItem('username', res.data.data.username)
           this.props.history.push('/index/home')

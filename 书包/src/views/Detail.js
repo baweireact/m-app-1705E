@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import axios from 'axios'
 import { connect } from 'react-redux'
+import Api from '../api'
 
 const Detail = (props) => {
   const [ detail, setDetail ] = useState({})
@@ -8,15 +8,11 @@ const Detail = (props) => {
   const handleAdd = (item) => {
     let { bookList } = props
     let bookListClone = JSON.parse(JSON.stringify(bookList))
+    item.checked = true
+    item.count = 1
     bookListClone.push(item)
     props.setState('bookList', bookListClone)
-    axios({
-      url: '/api/add',
-      data: {
-        item
-      },
-      method: 'post'
-    }).then(res => {
+    Api.add({item}).then(res => {
       if (res.data.code === 200) {
 
       }
@@ -25,17 +21,13 @@ const Detail = (props) => {
 
   useEffect(() => {
     let { id } = props.match.params
-    axios({
-      url: `/api/detail?id=${id}`
-    }).then(res => {
+    Api.getDetail(`?id=${id}`).then(res => {
       if (res.data.code === 200) {
         setDetail(res.data.data)
       }
     })
 
-    axios({
-      url: '/api/get_book_list'
-    }).then(res => {
+    Api.getBookList().then(res => {
       if (res.data.code === 200) {
         props.setState('bookList', res.data.data)
       }
@@ -46,7 +38,7 @@ const Detail = (props) => {
 
   return (
     <div>
-      <img src={detail.avatar}></img>
+      <img src={detail.avatar}></img>,价格：{detail.price}元
       {
           bookList.find(book => book.id === detail.id)
           ? <button>已收藏</button>

@@ -21,6 +21,7 @@ const bookMallData = [
 			{
 				"id": 1009,
 				"title": "铁拳争锋",
+				"price": 2,
 				"roles": ["萧云龙", "柳如烟"],
 				"author": "梁七少",
 				"words": 6295891,
@@ -46,6 +47,7 @@ const bookMallData = [
 			}, {
 				"id": 7404,
 				"title": "余生尽是你温柔",
+				"price": 3,
 				"roles": ["陆一语", "刘婉宁"],
 				"author": "也非",
 				"words": 2591930,
@@ -71,6 +73,7 @@ const bookMallData = [
 			}, {
 				"id": 7094,
 				"title": "都市强尊",
+				"price": 4,
 				"roles": ["林君河", "楚默心"],
 				"author": "桔梗",
 				"words": 2751531,
@@ -96,6 +99,7 @@ const bookMallData = [
 			}, {
 				"id": 7402,
 				"title": "爱舍难分",
+				"price": 5,
 				"roles": ["宋喜", "乔治笙"],
 				"author": "鱼不语",
 				"words": 2525983,
@@ -121,6 +125,7 @@ const bookMallData = [
 			}, {
 				"id": 5535,
 				"title": "修仙狂龙",
+				"price": 6,
 				"roles": ["唐铮", "方诗诗"],
 				"author": "唐箫",
 				"words": 5184864,
@@ -153,6 +158,7 @@ const bookMallData = [
 			{
 				"id": 5568,
 				"title": "只愿今生伴随你",
+				"price": 7,
 				"roles": ["田罗舒", "莫文泽"],
 				"author": "田小姐6",
 				"words": 1348188,
@@ -178,6 +184,7 @@ const bookMallData = [
 			}, {
 				"id": 3940,
 				"title": "妃戴凤冠美如画",
+				"price": 9,
 				"roles": ["段如兰", "钟明巍"],
 				"author": "一味相思",
 				"words": 1566286,
@@ -203,6 +210,7 @@ const bookMallData = [
 			}, {
 				"id": 5496,
 				"title": "许你一生一世缘",
+				"price": 8,
 				"roles": ["苏北", "路南"],
 				"author": "云起莫离",
 				"words": 3741100,
@@ -228,6 +236,7 @@ const bookMallData = [
 			}, {
 				"id": 6223,
 				"title": "婚规",
+				"price": 12,
 				"roles": ["姚淇淇", "华辰风"],
 				"author": "晚天欲雪",
 				"words": 966896,
@@ -253,6 +262,7 @@ const bookMallData = [
 			}, {
 				"id": 7127,
 				"title": "铁血狂少",
+				"price": 22,
 				"roles": ["苏金", "夏云"],
 				"author": "骑猫的鱼",
 				"words": 5909610,
@@ -285,6 +295,7 @@ const bookMallData = [
 			{
 				"id": 3033,
 				"title": "绝品圣医小少年",
+				"price": 11,
 				"roles": ["华天成", "丁香"],
 				"author": "盛世龙腾",
 				"words": 3504933,
@@ -310,6 +321,7 @@ const bookMallData = [
 			}, {
 				"id": 5003,
 				"title": "全职妙手",
+				"price": 28,
 				"roles": ["赵晨飞", "郑红嫣"],
 				"author": "猫族皇子",
 				"words": 1352221,
@@ -335,6 +347,7 @@ const bookMallData = [
 			}, {
 				"id": 4421,
 				"title": "心劫难过情关",
+				"price": 31,
 				"roles": ["裴染染", "景辰昊"],
 				"author": "浅岛溺心",
 				"words": 2242420,
@@ -360,6 +373,7 @@ const bookMallData = [
 			}, {
 				"id": 4435,
 				"title": "我的高冷大小姐",
+				"price": 1,
 				"roles": ["轩雨妃", "李晴川"],
 				"author": "大大洋洋",
 				"words": 1090550,
@@ -385,6 +399,7 @@ const bookMallData = [
 			}, {
 				"id": 3042,
 				"title": "都市狂枭",
+				"price": 22,
 				"roles": ["沈清舞", "陈六合"],
 				"author": "大红大紫",
 				"words": 5013606,

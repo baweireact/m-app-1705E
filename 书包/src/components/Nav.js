@@ -1,15 +1,13 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import axios from 'axios'
+import Api from '../api'
 
 class Nav extends Component {
   handleNav(index, id) {
     this.props.setState('currentIndex', index)
     this.props.setState('currentId', id)
 
-    axios({
-      url: `/api/list?id=${id}`
-    }).then(res => {
+    Api.getList(`?id=${id}`).then(res => {
       if (res.data.code === 200) {
         this.props.setState('currentList', res.data.data.list)
       }
@@ -17,9 +15,7 @@ class Nav extends Component {
   }
 
   componentDidMount() {
-    axios({
-      url: '/api/nav'
-    }).then(res => {
+    Api.getNav().then(res => {
       if (res.data.code === 200) {
         this.props.setState('navList', res.data.data)
       }

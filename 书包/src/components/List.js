@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from  'react-redux'
 import { withRouter } from 'react-router-dom'
-import axios from 'axios'
+import Api from '../api'
 
 class List extends Component {
 
@@ -10,16 +10,16 @@ class List extends Component {
   }
 
   handleAdd(item) {
+    if (!localStorage.getItem('username')) {
+      this.props.history.push('/login')
+      return;
+    }
     let { bookList } = this.props
+    item.checked = true
+    item.count = 1
     bookList.push(item)
     this.props.setState('bookList', bookList)
-    axios({
-      url: '/api/add',
-      data: {
-        item
-      },
-      method: 'post'
-    }).then(res => {
+    Api.add({item}).then(res => {
       if (res.data.code === 200) {
 
       }
@@ -27,16 +27,12 @@ class List extends Component {
   }
 
   componentDidMount() {
-    axios({
-      url: '/api/list?id=0'
-    }).then(res => {
+    Api.getList(`?id=0`).then(res => {
       if (res.data.code === 200) {
         this.props.setState('currentList', res.data.data.list)
       }
     })
-    axios({
-      url: '/api/get_book_list'
-    }).then(res => {
+    Api.getBookList().then(res => {
       if (res.data.code === 200) {
         this.props.setState('bookList', res.data.data)
       }
@@ -47,7 +43,7 @@ class List extends Component {
 
     let currentListDom = currentList.map(item => (
       <div key={item.id}>
-        {item.title}
+        {item.title},价格：{item.price}元
         <button onClick={this.handleDetail.bind(this, item.id)}>详情</button>
         {
           bookList.find(book => book.id === item.id)

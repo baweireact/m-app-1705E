@@ -188,7 +188,7 @@ module.exports = function (proxy, allowedHost) {
         })
       })
 
-      //加入书包
+      //加入书包, 增
       app.post('/api/add', (req, res) => {
         let { item } = req.body
         bookList.push(item)
@@ -199,7 +199,7 @@ module.exports = function (proxy, allowedHost) {
         })
       })
 
-      //获取书包里的数据
+      //获取书包里的数据，查
       app.get('/api/get_book_list', (req, res) => {
         res.send({
           code: 200,
@@ -208,7 +208,7 @@ module.exports = function (proxy, allowedHost) {
         })
       })
 
-      //删除一个或多个
+      //删除一个或多个，删
       app.post('/api/delete', (req, res) => {
         let { ids } = req.body
         console.log(ids)
@@ -218,6 +218,17 @@ module.exports = function (proxy, allowedHost) {
           code: 200,
           data: bookList,
           message: '删除成功'
+        })
+      })
+
+      //改
+      app.post('/api/update', (req, res) => {
+        let { bookListNew } = req.body
+        bookList = bookListNew
+        res.send({
+          code: 200,
+          data: bookList,
+          message: '更新成功'
         })
       })
     },

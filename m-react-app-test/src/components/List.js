@@ -10,6 +10,10 @@ class List extends Component {
   }
 
   handleAdd(item) {
+    if (!localStorage.getItem('username')) {
+      this.props.history.push('/login')
+      return;
+    }
     let { bookList } = this.props
     item.checked = true
     item.count = 1
@@ -33,6 +37,7 @@ class List extends Component {
         this.props.setState('bookList', res.data.data)
       }
     })
+    this.props.setState('currentIndex', 0)
   }
   render() {
     let { currentList, bookList } = this.props

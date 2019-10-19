@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "datepicker": "miniprogram-datepicker",
+    "book-nav": "/components/book-nav/book-nav",
+    "book-list": "/components/book-list/book-list"
+  }
+}

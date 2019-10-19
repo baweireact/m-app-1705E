@@ -8,6 +8,7 @@ const paths = require('./paths');
 const fs = require('fs');
 const bodyParser = require('body-parser')
 const { bookNavData, bookMallData } = require('./data.js')
+const { query } = require('./mysqlQuery')
 
 let bookList = []
 
@@ -123,8 +124,34 @@ module.exports = function (proxy, allowedHost) {
       app.use(bodyParser.json())
 
       //登录
-      app.post('/api/login', (req, res) => {
+      app.post('/api/login', async (req, res) => {
         let { username, password } = req.body
+        // query('select * from user', (result) => {
+        //   console.log(result)
+        //   let user = result.find(item => item.username === username)
+        //   if (user) {
+        //     if (user.password === password) {
+        //       res.send({
+        //         code: 200,
+        //         data: {
+        //           username
+        //         },
+        //         message: '登录成功'
+        //       })
+        //     } else {
+        //       res.send({
+        //         code: 400,
+        //         message: '密码错误'
+        //       })
+        //     }
+        //   } else {
+        //     res.send({
+        //       code: 400,
+        //       message: '用户不存在'
+        //     })
+        //   }
+        // })
+
         let user = userList.find(item => item.username === username)
         if (user) {
           if (user.password === password) {

@@ -1,0 +1,15 @@
+<!--pages/home/home.wxml-->
+  <swiper 
+    indicator-dots="{{true}}"
+    autoplay="{{true}}"
+    interval="{{1000}}"
+    style="height:{{height}}px">
+    <swiper-item wx:for="{{banner}}" wx:key="{{index}}">
+      <image src="{{item}}" mode="widthFix" class="m-item-img" bindload="handleImageLoad"></image>
+    </swiper-item>
+  </swiper>
+<!-- <datepicker bind:change="handleDate">
+  <button>日期</button>
+</datepicker> -->
+<book-nav navList="{{navList}}" currentIndex="{{currentIndex}}" bind:onNav="handleNav"></book-nav>
+<book-list currentList="{{currentList}}"></book-list>

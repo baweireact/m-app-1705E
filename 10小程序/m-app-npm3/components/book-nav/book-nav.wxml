@@ -1,0 +1,11 @@
+<!--components/book-nav/book-nav.wxml-->
+<view>
+  <text 
+    wx:for="{{navList}}" 
+    class="m-nav-item {{currentIndex === index ? 'active' : ''}}"
+    data-index="{{index}}"
+    data-id="{{item.id}}"
+    mark:index="{{index}}"
+    bind:tap="handleNav"
+    wx:key="{{index}}">{{item.title}}</text>
+</view>

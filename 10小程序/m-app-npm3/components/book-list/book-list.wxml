@@ -1,0 +1,6 @@
+<!--components/book-list/book-list.wxml-->
+<view>
+  <view wx:for="{{currentList}}" wx:key="{{index}}">
+    {{item.title}}
+  </view>
+</view>

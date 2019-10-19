@@ -1,0 +1,4 @@
+<!--pages/home/home.wxml-->
+<datepicker bind:change="handleDate">
+  <button>日期</button>
+</datepicker>

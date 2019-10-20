@@ -1,4 +1,6 @@
 // pages/home/home.js
+//const host = "http://192.168.0.104:3000"
+const { host } = getApp().globalData
 Page({
 
   /**
@@ -12,8 +14,9 @@ Page({
     ],
     height: 150,
     navList: [],
-    currentIndex: 0,
-    currentList: []
+    currentId: 0,
+    currentList: [],
+    scrollTo: ""
   },
 
   handleDate(e) {
@@ -32,21 +35,41 @@ Page({
   },
 
   handleNav(e) {
-    let { index, id } = e.detail
+    let { id } = e.detail
     this.setData({
-      currentIndex: index
+      currentId: id,
+      scrollTo: "m-nav"
     })
 
     wx.request({
-      url: `http://localhost:3000/api/list?id=${id}`,
+      url: `${host}/api/list?id=${id}`,
       success: (res) => {
         if (res.data.code === 200) {
           this.setData({
-            currentList: res.data.data.list
+            currentList: res.data.data
           })
         }
       }
     })
+  },
+
+  handleUpdate() {
+    let { currentId } = this.data
+
+    wx.request({
+      url: `${host}/api/list?id=${currentId}`,
+      success: (res) => {
+        if (res.data.code === 200) {
+          this.setData({
+            currentList: res.data.data
+          })
+        }
+      }
+    })
+  },
+
+  handleToLower(e) {
+    console.log('滚动到底部')
   },
 
   /**
@@ -68,7 +91,7 @@ Page({
    */
   onShow: function () {
     wx.request({
-      url: 'http://localhost:3000/api/nav',
+      url: `${host}/api/nav`,
       success: (res) => {
         if (res.data.code === 200) {
           this.setData({
@@ -79,11 +102,11 @@ Page({
     })
 
     wx.request({
-      url: 'http://localhost:3000/api/list?id=0',
+      url: `${host}/api/list?id=0`,
       success: (res) => {
         if (res.data.code === 200) {
           this.setData({
-            currentList: res.data.data.list
+            currentList: res.data.data
           })
         }
       }

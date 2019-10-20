@@ -1,1 +1,11 @@
 /* components/book-list/book-list.wxss */
+.m-list-item{display: flex;position: relative; margin: 5px;}
+.m-list-img{width: 225rpx;height: 300rpx;}
+.m-list-info{flex: 1px;margin: 0 0 0 5px;border-bottom: 1px solid #dddddd;}
+.m-list-title{font-size: 44rpx;}
+.m-list-btn-wrap{position: absolute;bottom: 20rpx;right: 10rpx;}
+.m-btn{margin: 5rpx;background: red;color: #ffffff;}
+.m-in-cart-btn{margin: 5rpx;background: #dddddd;color: #333333;}
+
+
+

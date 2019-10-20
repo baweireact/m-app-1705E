@@ -1,3 +1,4 @@
 /* components/book-nav/book-nav.wxss */
-.m-nav-item{margin: 5rpx;}
-.m-nav-item.active{color: red;}
+.m-nav{position: sticky;top: 0; padding: 20rpx 0;background: #ffffff;border-bottom: 1px solid #dddddd; z-index: 9; }
+.m-nav-item{margin: 10rpx;font-size: 46rpx;}
+.m-nav-item.active{color: red;border-bottom: 6rpx solid red;}

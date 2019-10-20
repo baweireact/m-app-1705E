@@ -5,7 +5,7 @@ Component({
    */
   properties: {
     navList: Array,
-    currentIndex: Number
+    currentId: Number
   },
 
   /**
@@ -20,9 +20,8 @@ Component({
    */
   methods: {
     handleNav(e) {
-      let { index, id } = e.target.dataset
-      console.log(this)
-      this.triggerEvent('onNav', { index, id })
+      let { id } = e.target.dataset
+      this.triggerEvent('onNav', { id })
     }
   }
 })

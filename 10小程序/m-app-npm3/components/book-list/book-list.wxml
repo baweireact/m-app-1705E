@@ -1,6 +1,15 @@
 <!--components/book-list/book-list.wxml-->
 <view>
-  <view wx:for="{{currentList}}" wx:key="{{index}}">
-    {{item.title}}
+  <view wx:for="{{currentList}}" wx:key="{{index}}" class="m-list-item">
+    <image src="{{item.avatar}}" class="m-list-img"></image>
+    <view class="m-list-info">
+      <view class="m-list-title">{{item.title}}</view>
+      <view class="m-list-btn-wrap">
+        <button size="mini" class="m-btn" mark:id="{{item.id}}" bind:tap="handleDetail">详情</button>
+        <button size="mini" class="m-btn" mark:item="{{item}}" bind:tap="handleAdd" 
+        wx:if="{{!item.is_in_my_book}}">收藏</button>
+        <button size="mini" class="m-in-cart-btn" wx:else>已收藏</button>
+      </view>
+    </view>
   </view>
 </view>

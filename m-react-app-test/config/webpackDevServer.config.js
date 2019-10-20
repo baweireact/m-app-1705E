@@ -188,7 +188,14 @@ module.exports = function (proxy, allowedHost) {
       //列表
       app.get('/api/list', (req, res) => {
         let { id } = req.query
-        let list = bookMallData.find(item => item.id == id)
+        let list = bookMallData.find(item => item.id == id).list
+        list.forEach(item => {
+          if (bookList.findIndex(book => book.id === item.id) >=0) {
+            item.is_in_my_book = true
+          } else {
+            item.is_in_my_book = false
+          }
+        })
         res.send({
           code: 200,
           data: list,
@@ -207,6 +214,12 @@ module.exports = function (proxy, allowedHost) {
             }
           })
         })
+
+        if (bookList.find(book => book.id === detail)) {
+          detail.is_in_my_book = true
+        } else {
+          detail.is_in_my_book = false
+        }
 
         res.send({
           code: 200,

@@ -1,53 +1,18 @@
-// pages/detail/detail.js
-const { host } = getApp().globalData
-
+// pages/me/me.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    detail: {}
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options)
-    let { id } = options
-    wx.request({
-      url: `${host}/api/detail?id=${id}`,
-      success: (res) => {
-        if (res.data.code === 200) {
-          this.setData({
-            detail: res.data.data
-          })
-        }
-      }
-    })
-  },
 
-  handleAdd(e) {
-    let { item } = e.mark
-    item.count = 1
-    item.checked = true
-    wx.request({
-      url: `${host}/api/add`,
-      data: {
-        item
-      },
-      method: "post",
-      success: (res) => {
-        if (res.data.code === 200) {
-          let { detail } = this.data
-          detail.is_in_my_book = true
-          this.setData({
-            detail
-          })
-        }
-      }
-    })
   },
 
   /**

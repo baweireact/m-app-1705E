@@ -215,7 +215,7 @@ module.exports = function (proxy, allowedHost) {
           })
         })
 
-        if (bookList.find(book => book.id === detail)) {
+        if (bookList.find(book => book.id === detail.id)) {
           detail.is_in_my_book = true
         } else {
           detail.is_in_my_book = false

@@ -1,5 +1,5 @@
 // components/book-list/book-list.js
-const { host, handleSetTabBarBadge } = getApp().globalData
+const { host } = getApp().globalData
 
 Component({
   /**
@@ -40,7 +40,6 @@ Component({
         success: (res) => {
           if (res.data.code === 200) {
             this.triggerEvent('onUpate')
-            handleSetTabBarBadge(res.data.data.length)
           }
         }
       })

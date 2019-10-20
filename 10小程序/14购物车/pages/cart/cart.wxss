@@ -8,6 +8,5 @@
 .m-count{margin: 10rpx;font-weight: bold;}
 .m-delete-btn{margin: 10rpx;}
 .m-control{position: absolute;top: 0; right: 10rpx;}
-.m-delete-btn{vertical-align: top;}
 
 

@@ -1,0 +1,4 @@
+/* pages/detail/detail.wxss */
+.m-detail-img{width: 100%}
+.m-btn{margin: 5rpx;background: red;color: #ffffff;}
+.m-in-cart-btn{margin: 5rpx;background: #dddddd;color: #333333;}

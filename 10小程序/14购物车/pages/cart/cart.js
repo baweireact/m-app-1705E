@@ -1,5 +1,5 @@
 // pages/cart/cart.js
-const { host, handleSetTabBarBadge } = getApp().globalData
+const { host } = getApp().globalData
 
 Page({
 
@@ -44,7 +44,6 @@ Page({
           this.setData({
             selectAll: myBook.length === count
           })
-          handleSetTabBarBadge(myBook.length)
         }
       }
     })
@@ -100,15 +99,6 @@ Page({
     this.handleUpdate(myBook)
   },
 
-  handleDeletes() {
-    let { myBook } = this.data
-    myBook = myBook.filter(item => !item.checked)
-    this.setData({
-      myBook
-    })
-    this.handleUpdate(myBook)
-  },
-
   total(myBook) {
     let totalPrice = 0, totalCount = 0
     myBook.filter(item => item.checked).forEach(item => {
@@ -123,7 +113,6 @@ Page({
 
   handleUpdate(myBook) {
     this.total(myBook)
-    handleSetTabBarBadge(myBook.length)
     wx.request({
       url: `${host}/api/update`,
       data: {

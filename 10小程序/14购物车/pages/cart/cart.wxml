@@ -15,7 +15,6 @@
   <view>
     <checkbox-group bind:change="handleSelectAll">
       <checkbox checked="{{selectAll}}">全选</checkbox>
-      <button size="mini" bind:tap="handleDeletes" class="m-delete-btn" >删除</button>
     </checkbox-group>
   </view>
   <view>

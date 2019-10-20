@@ -1,6 +1,6 @@
 // pages/home/home.js
 //const host = "http://192.168.0.104:3000"
-const { host, handleSetTabBarBadge } = getApp().globalData
+const { host } = getApp().globalData
 Page({
 
   /**
@@ -90,7 +90,6 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    let { currentId } = this.data
     wx.request({
       url: `${host}/api/nav`,
       success: (res) => {
@@ -103,22 +102,13 @@ Page({
     })
 
     wx.request({
-      url: `${host}/api/list?id=${currentId}`,
+      url: `${host}/api/list?id=0`,
       success: (res) => {
         if (res.data.code === 200) {
           this.setData({
             currentList: res.data.data
           })
         }
-      }
-    })
-
-    wx.request({
-      url: `${host}/api/get_book_list`,
-      success: (res) => {
-        if (res.data.code === 200) {
-          handleSetTabBarBadge(res.data.data.length)
-        } 
       }
     })
   },

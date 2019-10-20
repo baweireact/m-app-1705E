@@ -1,0 +1,6 @@
+/* pages/home/home.wxss */
+page{height: 100%;}
+.m-scroll-view{height: 100%;}
+.m-item-img{width: 100%}
+
+

@@ -1,0 +1,12 @@
+<!--components/food-list/food-list.wxml-->
+
+<scroll-view class="m-list" scroll-y="{{true}}" scroll-into-view="{{currentId}}">
+  <view wx:for="{{foodList}}" wx:key="{{item.id}}" id="id_{{item.id}}">
+    <view class="m-list-title" >{{item.name}}</view>
+    <view>
+      <view wx:for="{{item.foods}}" wx:key="{{food.item_id}}" wx:for-item="food">
+        {{food.name}}
+      </view>
+    </view>
+  </view>
+</scroll-view>

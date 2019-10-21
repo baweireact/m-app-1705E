@@ -1,0 +1,3 @@
+/* components/book-nav/book-nav.wxss */
+.m-nav-item{margin: 10rpx;}
+.m-nav-item.active{color: red;}

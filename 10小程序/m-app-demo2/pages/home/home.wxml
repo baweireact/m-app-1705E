@@ -1,0 +1,24 @@
+<!--pages/home/home.wxml-->
+<view>
+  <swiper indicator-dots="{{true}}"
+    autoplay="{{true}}" interval="{{50000}}" circular="{{true}}" style="height: {{height}}px;">
+      <swiper-item>
+        <image bind:load="handleLoad" class="m-banner-img" mode="widthFix" src="https://n4-q.mafengwo.net/s15/M00/D3/A0/CoUBGV2sYR6AKFOhAB75qcLd4Xo148.png?imageMogr2%2Fthumbnail%2F%21750x422r%2Fgravity%2FCenter%2Fcrop%2F%21750x422%2Fquality%2F90"></image>
+      </swiper-item>
+      <swiper-item>
+        <image class="m-banner-img" mode="widthFix" src="https://b4-q.mafengwo.net/s15/M00/5C/D5/CoUBGV2p3OGAf9NDACybiI-0fZk739.png?imageMogr2%2Fthumbnail%2F%21750x422r%2Fgravity%2FCenter%2Fcrop%2F%21750x422%2Fquality%2F90"></image>
+      </swiper-item>
+      <swiper-item>
+        <image class="m-banner-img" mode="widthFix"  src="https://p3-q.mafengwo.net/s15/M00/7B/5D/CoUBGV2rD8uAExelACLn-83WVAY076.png?imageMogr2%2Fthumbnail%2F%21750x422r%2Fgravity%2FCenter%2Fcrop%2F%21750x422%2Fquality%2F90"></image>
+      </swiper-item>
+  </swiper>
+</view>
+<text>{{count}}</text>
+<view>
+  <button size="mini" class="m-btn" mark:index="3"  data-step="2" data-a="3" bindtap="handleSub">减</button>
+  <button size="mini" class="m-btn" mark:index="3"  data-step="2" data-a="3" bindtap="handleAdd">加</button>
+</view>
+<view>
+  <book-nav navList="{{navList}}" currentId="{{currentId}}" bind:onNav="handleNav"></book-nav>
+</view>
+

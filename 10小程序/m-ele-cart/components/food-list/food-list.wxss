@@ -1,0 +1,4 @@
+/* components/food-list/food-list.wxss */
+.m-list{flex: 1;height: 100%; overflow: hidden;}
+.m-list-title{position: sticky;top: 0; background: #dddddd;}
+

@@ -1,0 +1,7 @@
+<!--components/food-nav/food-nav.wxml-->
+<scroll-view class="m-food-nav" scroll-y="{{true}}">
+  <view wx:for="{{foodList}}" wx:key="{{item.id}}" class="m-food-nav-item {{currentId === ('id_' + item.id) ? 'active' : ''}}" mark:id="id_{{item.id}}" bind:tap="handleNav">
+    {{item.name}}
+  </view>
+</scroll-view>
+

@@ -1,0 +1,7 @@
+/* pages/home/home.wxss */
+.m-btn{background: red;color: #ffffff;}
+.m-banner-img{width: 100%;}
+
+
+
+

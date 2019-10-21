@@ -1,4 +1,3 @@
-
 //app.js
 App({
   onLaunch: function () {
@@ -35,20 +34,6 @@ App({
     })
   },
   globalData: {
-    userInfo: null,
-    //host: 'http://192.168.0.104:3000',
-    host: 'http://169.254.188.109:3000',
-    handleSetTabBarBadge: (text) => {
-      if (text > 0) {
-        wx.setTabBarBadge({
-          index: 1,
-          text: text + ''
-        })
-      } else {
-        wx.removeTabBarBadge({
-          index: 1,
-        })
-      }
-    }
+    userInfo: null
   }
 })

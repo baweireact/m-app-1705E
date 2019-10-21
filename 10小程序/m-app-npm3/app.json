@@ -1,11 +1,12 @@
 {
   "pages": [
+    
     "pages/cart/cart",
     "pages/home/home",
-    "pages/me/me",
+    "pages/detail/detail",
     "pages/index/index",
     "pages/logs/logs",
-    "pages/detail/detail"
+    "pages/me/me"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -32,10 +33,15 @@
       },
       {
         "text": "我的",
-        "pagePath": "pages/me/me",
+        "pagePath": "pages/index/index",
         "iconPath": "./static/images/me.png",
         "selectedIconPath": "./static/images/me-active.png"
       }
     ]
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "位置"
+    }
   }
 }

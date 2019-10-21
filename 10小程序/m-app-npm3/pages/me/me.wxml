@@ -1,2 +1,11 @@
 <!--pages/me/me.wxml-->
-<text>pages/me/me.wxml</text>
+<view>
+  <button type="primary" bind:tap="handleLogin">登录</button>
+  <button size="mini" type="primary" open-type="exit">退出</button>
+  <button size="mini" type="primary" bind:tap="handleAddress">选择地址</button>
+  <button size="mini" type="primary" bind:tap="handleStep">微信步数</button>
+  <camera device-position="back" flash="off" binderror="error" style="width: 100%; height: 300px;"></camera>
+  <button size="mini" type="primary" bind:tap="handleCamera">拍照</button>
+  <image mode="widthFix" src="{{src}}"></image>
+  <text>message: {{message}}</text>
+</view>

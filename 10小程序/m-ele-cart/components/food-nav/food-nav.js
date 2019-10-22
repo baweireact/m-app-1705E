@@ -5,7 +5,8 @@ Component({
    */
   properties: {
     foodList: Array,
-    currentId: String
+    navCurrentIndex: Number,
+    navCurrentId: String
   },
 
   /**
@@ -20,8 +21,8 @@ Component({
    */
   methods: {
     handleNav(e) {
-      let { id } = e.mark
-      this.triggerEvent('onNav', { id })
+      let { id, index } = e.mark
+      this.triggerEvent('onNav', { id, index })
     },
   }
 })

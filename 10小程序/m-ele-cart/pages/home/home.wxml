@@ -2,10 +2,10 @@
 <view class="m-home-wrap">
   <view class="m-title">点餐系统</view>
   <view class="m-food-wrap">
-    <view class="m-home-nav">点餐，评价，商家</view>
+    <view class="m-home-nav">点餐，评价，商家(吸顶)</view>
     <view class="m-home-content">
-      <food-nav foodList="{{foodList}}" currentId="{{currentId}}" bind:onNav="handleNav"></food-nav>
-      <food-list foodList="{{foodList}}" currentId="{{currentId}}"></food-list>
+      <food-nav foodList="{{foodList}}" navCurrentIndex="{{navCurrentIndex}}" navCurrentId="{{navCurrentId}}" bind:onNav="handleNav"></food-nav>
+      <food-list foodList="{{foodList}}" navCurrentIndex="{{navCurrentIndex}}" listCurrentId="{{listCurrentId}}" bind:onCurrentIndex="handleCurrentIndex" class="m-food-list"></food-list>
     </view>
   </view>
 </view>

@@ -8,7 +8,7 @@ const paths = require('./paths');
 const fs = require('fs');
 const bodyParser = require('body-parser')
 const { bookNavData, bookMallData } = require('./data.js')
-const { query } = require('./mysqlQuery')
+//const { query } = require('./mysqlQuery')
 
 let bookList = []
 

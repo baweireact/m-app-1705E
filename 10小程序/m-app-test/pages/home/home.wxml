@@ -1,0 +1,26 @@
+<!--pages/home/home.wxml-->
+<scroll-view scroll-into-view="{{scrollTo}}" scroll-y="{{true}}" class="m-scroll">
+  <view class="m-banner">banner</view>
+  <view class="m-nav" id="m-nav" bind:tap="handleNav">
+    <text wx:for="{{navList}}" wx:key="{{index}}">{{item.title}}</text>
+  </view>
+  <view class="m-content">
+      <view style="background:#dddddd;">content</view> 
+      <view>content</view> 
+      <view>content</view> 
+      <view>content</view> 
+      <view>content</view> 
+      <view>content</view> 
+      <view>content</view> 
+      <view>content</view> 
+      <view>content</view> 
+      <view>content</view> 
+      <view>content</view> 
+      <view>content</view> 
+      <view>content</view> 
+      <view>content</view> 
+      <view>content</view> 
+      <view>content</view> 
+      <view>content</view>       
+  </view>
+</scroll-view>

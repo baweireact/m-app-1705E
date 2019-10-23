@@ -1,0 +1,6 @@
+/* pages/home/home.wxss */
+page{height: 100%;}
+.m-scroll{position: relative; height: 100%;}
+.m-banner{height: 200rpx;background: #dddddd;}
+.m-nav{position: sticky;top: 0; background: orange;}
+.m-content view{height: 200rpx;border-bottom: 1px solid red;}

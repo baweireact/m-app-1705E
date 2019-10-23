@@ -1,5 +1,5 @@
 <!--components/book-list/book-list.wxml-->
-<view>
+<scroll-view scroll-y="{{true}}" class="m-book-list">
   <view wx:for="{{currentList}}" wx:key="{{index}}" class="m-list-item">
     <image src="{{item.avatar}}" class="m-list-img"></image>
     <view class="m-list-info">
@@ -12,4 +12,4 @@
       </view>
     </view>
   </view>
-</view>
+</scroll-view>

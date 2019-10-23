@@ -1,5 +1,6 @@
 import axios from 'axios'
 import urls from './url'
+axios.defaults.baseURL = "http://localhost:8888"
 
 const common = async (config) => {
   const response = await axios(config)

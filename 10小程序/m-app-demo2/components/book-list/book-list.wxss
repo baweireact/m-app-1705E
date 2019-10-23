@@ -1,4 +1,4 @@
 /* components/book-list/book-list.wxss */
 
-.m-list-item{display: flex;margin: 20rpx;}
+.m-list-item{display: flex;margin: 20rpx 0 500rpx 0;}
 .m-list-img{width: 244rpx;}

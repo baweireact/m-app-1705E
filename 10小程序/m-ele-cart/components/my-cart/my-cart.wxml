@@ -1,0 +1,2 @@
+<!--components/my-cart/my-cart.wxml-->
+<view class="m-my-cart">购物车, {{count}}</view>

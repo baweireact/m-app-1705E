@@ -1,4 +1,7 @@
 // components/food-list/food-list.js
+let appInstance = getApp()
+let { host } = appInstance.globalData
+
 Component({
   /**
    * 组件的属性列表
@@ -13,7 +16,8 @@ Component({
    * 组件的初始数据
    */
   data: {
-    listDomInfo: []
+    listDomInfo: [],
+    myCart: []
   },
 
   /**
@@ -37,6 +41,61 @@ Component({
           break
         }
       }
+    },
+    handleAdd(e) {
+      let { food, index, foodIndex } = e.mark
+      let { myCart } = this.data
+      let tempIndex = myCart.findIndex(item => item.spuId == food.spuId)
+      let count = 1
+      if (tempIndex >= 0) {
+        myCart[tempIndex].count += 1
+        count = myCart[tempIndex].count
+      } else {
+        food.count = count
+        myCart.push(food)
+      }
+
+      wx.request({
+        url: `${host}/api/update_my_cart`,
+        data: {
+          newMyCart: myCart
+        },
+        method: 'post',
+        success: (res) => {
+          if (res.data.code === 200) {
+            this.triggerEvent('onUpdateFoodList', { index, foodIndex, count})
+          }
+        }
+      })
+
+      appInstance.globalData.count += 1
+      console.log(appInstance.globalData)
+
+    },
+    handleSub(e) {
+      let { food, index, foodIndex } = e.mark
+      let { myCart } = this.data
+      let tempIndex = myCart.findIndex(item => item.spuId === food.spuId)
+      if (tempIndex >= 0) {
+        if (myCart[tempIndex].count >= 2) {
+          myCart[tempIndex].count -= 1
+        } else {
+          myCart.splice(tempIndex, 1)
+        }
+      }
+
+      wx.request({
+        url: `${host}/api/update_my_cart`,
+        data: {
+          newMyCart: myCart
+        },
+        method: 'post',
+        success: (res) => {
+          if (res.data.code === 200) {
+            this.triggerEvent('onUpdateFoodList', { index, foodIndex, count: food.count - 1 })
+          }
+        }
+      })
     }
   },
 
@@ -55,6 +114,17 @@ Component({
         })
         console.log(res)
       }).exec()
+
+      wx.request({
+        url: `${host}/api/get_my_cart`,
+        success: (res) => {
+          if (res.data.code === 200) {
+            this.setData({
+              myCart: res.data.data
+            })
+          }
+        }
+      })
     },
   }
 })

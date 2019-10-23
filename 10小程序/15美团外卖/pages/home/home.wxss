@@ -1,0 +1,10 @@
+/* pages/home/home.wxss */
+.m-home-wrap{position: absolute;top: 0;left: 0;right: 0;bottom: 0;}
+.m-title{text-align: center;height: 200rpx;line-height: 200rpx;border-bottom: 1px solid #dddddd;}
+.m-food-wrap{display: flex;flex-direction: column; position: sticky;top: 0; height: 100%;}
+.m-home-nav{ height: 100rpx;line-height: 100rpx; border-bottom: 1px solid #dddddd;background: #ffffff;}
+.m-home-content{display: flex; flex: 1;margin: 0 0 20rpx 0;border-bottom: 1px solid #dddddd; overflow: hidden;}
+.m-food-list{overflow: hidden;}
+
+
+

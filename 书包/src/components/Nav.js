@@ -9,7 +9,7 @@ class Nav extends Component {
 
     Api.getList(`?id=${id}`).then(res => {
       if (res.data.code === 200) {
-        this.props.setState('currentList', res.data.data.list)
+        this.props.setState('currentList', res.data.data)
       }
     })
   }

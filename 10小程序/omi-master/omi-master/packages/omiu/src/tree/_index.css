@@ -1,0 +1,16 @@
+.o-tree {
+  position: relative;
+  width: 240px;
+  height: auto;
+  min-height: 200px;
+}
+
+
+ul,
+li {
+  list-style: none;
+  padding: 0;
+  padding-left: 5px;
+  margin: 0;
+}
+

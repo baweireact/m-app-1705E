@@ -3,11 +3,16 @@
   <view wx:for="{{foodList}}" wx:key="{{item.categoryType}}" id="id_{{index}}" class="js-food-list-item">
     <view class="m-list-title" >{{item.categoryName}}</view>
     <view class="m-food-list-content">
-      <view wx:for="{{item.spuList}}" wx:key="{{food.spuId}}" wx:for-item="food" class="m-list-food-item">
+      <view wx:for="{{item.spuList}}" wx:key="{{food.spuId}}" wx:for-item="food" wx:for-index="foodIndex" class="m-list-food-item">
         <image class="m-list-food-img" src="{{food.littleImageUrl}}"></image>
         <view class="m-list-food-info">
           <view class="m-food-name">{{food.spuName}}</view>
           <view class="m-food-price">￥{{food.currentPrice}}</view>
+          <view class="m-food-order">
+              <text class="m-sub-btn {{food.count > 0 ? 'active': ''}}" mark:food="{{food}}" mark:index="{{index}}" mark:foodIndex="{{foodIndex}}" bind:tap="handleSub" >-</text>
+              <text class="m-food-count {{food.count > 0 ? 'active': ''}}">{{food.count}}</text>
+              <text class="m-add-btn active" mark:food="{{food}}" mark:index="{{index}}" mark:foodIndex="{{foodIndex}}"  bind:tap="handleAdd" >+</text>
+          </view>
         </view>
       </view>
     </view>

@@ -1,5 +1,6 @@
 {
   "usingComponents": {
-    "book-nav": "/components/book-nav/book-nav"
+    "book-nav": "/components/book-nav/book-nav",
+    "book-list": "/components/book-list/book-list"
   }
 }

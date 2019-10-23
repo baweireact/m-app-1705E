@@ -1,4 +1,7 @@
 // pages/home/home.js
+const app = getApp()
+const { host } = app.globalData
+
 Page({
 
   /**
@@ -7,21 +10,10 @@ Page({
   data: {
     count: 0,
     height: 221,
-    navList: [
-      {
-        id: 0,
-        title: '武侠'
-      },
-      {
-        id: 1,
-        title: '都市'
-      },
-      {
-        id: 2,
-        title: '科幻'
-      }
-    ],
-    currentId: 0
+    navList: [],
+    currentId: 0,
+    currentList: [],
+    srcollTo: ''
   },
 
   handleAdd(e) {
@@ -52,8 +44,34 @@ Page({
     //获取id，设置到currentId上
     let { id } = e.detail
     this.setData({
-      currentId: id
+      currentId: id,
+      srcollTo: 'm-nav'
     }) 
+
+    wx.request({
+      url: `${host}/api/list?id=${id}`,
+      success: (res) => {
+        if (res.data.code === 200) {
+          this.setData({
+            currentList: res.data.data
+          })
+        }
+      }
+    })
+  },
+
+  handleUpdate() {
+    let { currentId } = this.data
+    wx.request({
+      url: `${host}/api/list?id=${currentId}`,
+      success: (res) => {
+        if (res.data.code === 200) {
+          this.setData({
+            currentList: res.data.data
+          })
+        }
+      }
+    })
   },
 
   /**
@@ -74,7 +92,28 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    wx.request({
+      url: `${host}/api/nav`,
+      success: (res) => {
+        this.setData({
+          navList: res.data.data
+        })
+      }
+    })
 
+    wx.request({
+      url: `${host}/api/list?id=0`,
+      success: (res) => {
+        if (res.data.code === 200) {
+          this.setData({
+            currentList: res.data.data
+          })
+        }
+      }
+    })
+    this.setData({
+      currentId: 0
+    })
   },
 
   /**

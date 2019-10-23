@@ -1,0 +1,12 @@
+/* components/food-list/food-list.wxss */
+.m-list{ flex: 1;margin: 0 0 0 5rpx; height: 100%; overflow: hidden;}
+.m-list-title{position: sticky;top: 0;padding: 0 0 0 5rpx; font-weight: bold;color: red;line-height: 30px; background: #dddddd;}
+.m-food-list-content{width: 100%;}
+.m-list-food-item{display: flex;margin: 20rpx 5rpx;height: 220rpx;}
+.m-list-food-img{width: 180rpx;height: 136rpx;}
+.m-list-food-info{flex: 1;overflow: hidden;}
+.m-food-name{font-weight: bold;font-size: 40rpx;overflow: hidden;text-overflow:ellipsis;white-space: nowrap;}
+.m-food-price{color: red;}
+
+
+

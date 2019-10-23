@@ -1,0 +1,3 @@
+<!--components/nav/nav.wxml-->
+<view>{{motto}}</view>
+<button bind:tap="handleUpdate">改变</button>

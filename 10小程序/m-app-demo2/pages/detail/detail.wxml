@@ -1,0 +1,2 @@
+<!--pages/detail/detail.wxml-->
+<image class="m-detail-img" mode="widthFix" src="{{detail.avatar}}"></image>

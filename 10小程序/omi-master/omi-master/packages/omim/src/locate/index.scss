@@ -1,0 +1,13 @@
+@import "../theme";
+
+:host {
+  display: block;
+
+  position: absolute;
+}
+
+.root{
+  // position: absolute;
+  width: auto;
+  height: auto;
+}

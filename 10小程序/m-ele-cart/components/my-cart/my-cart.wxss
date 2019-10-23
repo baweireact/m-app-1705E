@@ -1,0 +1,2 @@
+/* components/my-cart/my-cart.wxss */
+.m-my-cart{height: 100rpx;}

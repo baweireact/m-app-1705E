@@ -1,4 +1,6 @@
 // pages/home/home.js
+const { host } = getApp().globalData
+
 Page({
 
   /**
@@ -27,6 +29,15 @@ Page({
     })
   },
 
+  handleUpdateFoodList(e) {
+    let { foodList } = this.data
+    let { index, foodIndex, count } = e.detail
+    foodList[index].spuList[foodIndex].count = count
+    this.setData({
+      foodList
+    })
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
@@ -46,7 +57,7 @@ Page({
    */
   onShow: function () {
     wx.request({
-      url: 'http://localhost:9000/api/food_list',
+      url: `${host}/api/food_list`,
       success: (res) => {
         if (res.data.code === 200) {
           this.setData({

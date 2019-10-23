@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "food-nav": "/components/food-nav/food-nav",
+    "food-list": "/components/food-list/food-list"
+  }
+}

@@ -1,4 +1,4 @@
 <!--components/book-nav/book-nav.wxml-->
-<view>
+<view class="m-nav">
   <text wx:for="{{navList}}" wx:key="{{item.id}}" class="m-nav-item {{ currentId === item.id ? 'active' : ''}}" data-id="{{item.id}}" bind:tap="handleNav">{{item.title}}</text>
 </view>

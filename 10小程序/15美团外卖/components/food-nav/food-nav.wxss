@@ -1,0 +1,5 @@
+/* components/food-nav/food-nav.wxss */
+
+.m-food-nav{width: 240rpx;height: 100%; background: #dddddd;}
+.m-food-nav-item{padding: 35rpx 10rpx; line-height: 50rpx;text-align: center;border-bottom: 1px solid #dddddd;}
+.m-food-nav-item.active{background: #ffffff;}

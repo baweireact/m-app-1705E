@@ -1,4 +1,6 @@
 /* pages/home/home.wxss */
+page{height: 100%;}
+.m-home{height: 100%;}
 .m-btn{background: red;color: #ffffff;}
 .m-banner-img{width: 100%;}
 

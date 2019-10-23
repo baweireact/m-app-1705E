@@ -1,0 +1,10 @@
+<!--components/book-list/book-list.wxml-->
+<view class="m-list-item" wx:for="{{currentList}}" wx:key="{{index}}">
+  <image class="m-list-img" mode="widthFix" src="{{item.avatar}}"></image>
+  <view>
+    <view>{{item.title}}</view>
+    <button data-id="{{item.id}}" mark:id="{{item.id}}" bind:tap="handleDetial">详情</button>
+    <button wx:if="{{!item.is_in_my_book}}" mark:item="{{item}}" bind:tap="handleAdd">收藏</button>
+    <button wx:else>已收藏</button>
+  </view>
+</view>

@@ -32,7 +32,7 @@ class List extends Component {
     //列表
     Api.getList(`?id=0`).then(res => {
       if (res.data.code === 200) {
-        this.props.setState('currentList', res.data.data.list)
+        this.props.setState('currentList', res.data.data)
       }
     })
 

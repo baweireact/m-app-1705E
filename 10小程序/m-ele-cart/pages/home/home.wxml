@@ -5,7 +5,8 @@
     <view class="m-home-nav">点餐，评价，商家(吸顶)</view>
     <view class="m-home-content">
       <food-nav foodList="{{foodList}}" navCurrentIndex="{{navCurrentIndex}}" navCurrentId="{{navCurrentId}}" bind:onNav="handleNav"></food-nav>
-      <food-list foodList="{{foodList}}" navCurrentIndex="{{navCurrentIndex}}" listCurrentId="{{listCurrentId}}" bind:onCurrentIndex="handleCurrentIndex" class="m-food-list"></food-list>
+      <food-list foodList="{{foodList}}" navCurrentIndex="{{navCurrentIndex}}" listCurrentId="{{listCurrentId}}" bind:onCurrentIndex="handleCurrentIndex" bind:onUpdateFoodList="handleUpdateFoodList" class="m-food-list"></food-list>
     </view>
+    <my-cart></my-cart>
   </view>
 </view>

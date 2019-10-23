@@ -5,7 +5,7 @@
     <text wx:for="{{navList}}" wx:key="{{index}}">{{item.title}}</text>
   </view>
   <view class="m-content">
-      <view style="background:#dddddd;">content</view> 
+    <scroll-view  scroll-y="{{true}}" class="m-content-scroll">
       <view>content</view> 
       <view>content</view> 
       <view>content</view> 
@@ -15,12 +15,6 @@
       <view>content</view> 
       <view>content</view> 
       <view>content</view> 
-      <view>content</view> 
-      <view>content</view> 
-      <view>content</view> 
-      <view>content</view> 
-      <view>content</view> 
-      <view>content</view> 
-      <view>content</view>       
+    </scroll-view>
   </view>
 </scroll-view>

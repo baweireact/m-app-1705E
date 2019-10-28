@@ -1,6 +1,7 @@
 import axios from 'axios'
 import urls from './url'
-axios.defaults.baseURL = "http://localhost:8888"
+//axios.defaults.baseURL = "http://localhost:8888"   //可以调用koa的接口
+axios.defaults.baseURL = "http://localhost:9999"   //可以调用使用node的http原生模块编写的接口
 
 const common = async (config) => {
   const response = await axios(config)

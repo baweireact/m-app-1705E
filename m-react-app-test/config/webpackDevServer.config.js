@@ -126,6 +126,7 @@ module.exports = function (proxy, allowedHost) {
       //登录
       app.post('/api/login', async (req, res) => {
         let { username, password } = req.body
+        console.log(username)
         // query('select * from user', (result) => {
         //   console.log(result)
         //   let user = result.find(item => item.username === username)

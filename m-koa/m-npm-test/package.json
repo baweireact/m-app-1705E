@@ -1,0 +1,16 @@
+{
+  "name": "m-npm-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node_modules/.bin/myapp"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "xu-20191024": "^1.0.8",
+    "xu-commander-test": "^1.0.1"
+  }
+}

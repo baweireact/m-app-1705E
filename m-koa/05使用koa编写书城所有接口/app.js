@@ -70,6 +70,7 @@ router.post('/api/login', async (ctx, next) => {
 
 //列表
 router.get('/api/list', (ctx) => {
+  console.log('aaa:', ctx)
   let { id } = ctx.request.query
   let list = bookMallData.find(item => item.id == id).list
   list.forEach(item => {

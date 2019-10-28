@@ -50,7 +50,7 @@ class List extends Component {
     let currentListDom = currentList.map(item => (
       <div key={item.id} className="m-list-item">
         <LazyLoad height={150}>
-          <img src={item.avatar} className="m-list-img"></img>
+          <img src={item.avatar} className="m-list-img" alt={item.title}></img>
         </LazyLoad>
         <div className="m-list-info">
           <div className="m-list-title">{item.title}</div>

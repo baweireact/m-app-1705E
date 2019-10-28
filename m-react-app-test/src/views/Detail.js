@@ -29,7 +29,7 @@ const Detail = (props) => {
 
     Api.getBookList().then(res => {
       if (res.data.code === 200) {
-        props.setState('bookList', res.data.data)
+        //props.setState('bookList', res.data.data)
       }
     })
   }, [])
@@ -38,7 +38,7 @@ const Detail = (props) => {
 
   return (
     <div>
-      <img src={detail.avatar}></img>,价格：{detail.price}元
+      <img src={detail.avatar} alt={detail.title}></img>,价格：{detail.price}元
       {
           bookList.find(book => book.id === detail.id)
           ? <button>已收藏</button>

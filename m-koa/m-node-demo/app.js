@@ -85,12 +85,11 @@ const server = http.createServer((req, res) => {
     })
   } else if (pathname === '/api/nav') {  //导航
     res.writeHead(200, { 'Content-Type': 'application/json' })
-    res.write(JSON.stringify({
+    res.end(JSON.stringify({
       code: 200,
       data: bookNavData,
       message: '导航'
     }))
-    res.end()
   } else if (pathname === '/api/list') {  //列表
     let { id } = url.parse(req.url, true).query
     let list = bookMallData.find(item => item.id == id).list
@@ -102,20 +101,18 @@ const server = http.createServer((req, res) => {
       }
     })
     res.writeHead(200, { 'Content-Type': 'application/json' })
-    res.write(JSON.stringify({
+    res.end(JSON.stringify({
       code: 200,
       data: list,
       message: '列表'
     }))
-    res.end()
   } else if (pathname === '/api/get_book_list') { //书包
     res.writeHead(200, { 'Content-Type': 'application/json' })
-    res.write(JSON.stringify({
+    res.end(JSON.stringify({
       code: 200,
       data: bookList,
       message: '书包'
     }))
-    res.end()
   } else if (pathname === '/api/add') {  //添加到书包
     let body = ''
     req.on('data', (chunk) => {
@@ -127,12 +124,66 @@ const server = http.createServer((req, res) => {
       let { item } = body
       bookList.push(item)
       res.writeHead(200, { 'Content-Type': 'application/json' })
-      res.write(JSON.stringify({
+      res.end(JSON.stringify({
         code: 200,
         data: bookList,
         message: '添加成功'
       }))
-      res.end()
+    })
+  } else if (pathname === '/api/detail') {   //详情
+    let { id } = url.parse(req.url, true).query
+    let detail
+    bookMallData.forEach(listItem => {
+      listItem.list.forEach(book => {
+        if (book.id == id) {
+          detail = book
+        }
+      })
+    })
+
+    if (bookList.find(book => book.id === detail.id)) {
+      detail.is_in_my_book = true
+    } else {
+      detail.is_in_my_book = false
+    }
+    res.writeHead(200, { 'Content-Type': 'application/json' })
+    res.end(JSON.stringify({
+      code: 200,
+      data: detail,
+      message: '详情'
+    }))
+  } else if (pathname === '/api/delete') {  //删除
+    let body = ''
+    req.on('data', (chunk) => {
+      body +=chunk
+      console.log('chunk:', chunk)
+    })
+    req.on('end', () => {
+      body = JSON.parse(body)
+      let { ids } = body
+      bookList = bookList.filter(item => !ids.find(id => id === item.id))
+      res.writeHead(200, { 'Content-Type': 'application/json' })
+      res.end(JSON.stringify({
+        code: 200,
+        data: bookList,
+        message: '删除成功'
+      }))
+    })
+  } else if (pathname === '/api/update') {
+    let body = ''
+    req.on('data', (chunk) => {
+      body += chunk
+    })
+    req.on('end', () => {
+      body = JSON.parse(body)
+      let { bookListNew } = body
+      bookList = bookListNew
+      res.writeHead(200, { 'Content-Type': 'application/json' })
+      res.end(JSON.stringify({
+        code: 200,
+        data: bookList,
+        message: '更新成功'
+      }))
     })
   } else {
     res.writeHead(404, { 'Content-Type': 'text/html' })

@@ -3,23 +3,11 @@ import { connect } from 'react-redux'
 import Api from '../api'
 
 class MyBook extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      selectAll: false
-    }
-  }
-
   //选中某一本书，或者取消选中
   handleSelect(index, e) {
     let { bookList } = this.props
     bookList[index].checked = e.target.checked
     this.props.setState('bookList', bookList)
-
-    let count = bookList.filter(item => item.checked).length
-    this.setState({
-      selectAll: bookList.length === count  //和全选按钮联动
-    })
   }
 
   //全选，包括联动
@@ -30,9 +18,6 @@ class MyBook extends Component {
       item.checked = e.target.checked
     })
     this.props.setState('bookList', bookList)
-    this.setState({
-      selectAll: e.target.checked
-    })
   }
 
   //删除多个
@@ -90,18 +75,12 @@ class MyBook extends Component {
   componentDidMount() {
     Api.getBookList().then(res => {
       if (res.data.code === 200) {
-        let bookList = res.data.data
-        this.props.setState('bookList', bookList)
-        let count = bookList.filter(item => item.checked).length
-        this.setState({
-          selectAll: bookList.length === count  //和全选按钮联动
-        })
+        this.props.setState('bookList', res.data.data)
       }
     })
   }
   
   render() {
-    let { selectAll } = this.state
     let { bookList } = this.props
     const bookListDom = bookList.map((item, index) => (
       <div key={item.id}>
@@ -115,10 +94,10 @@ class MyBook extends Component {
       totalCount += item.count
       totalPrice += item.count * item.price
     })
-    console.log(11)
+    let count = bookList.filter(item => item.checked).length
     return (
       <div>
-        <input type="checkbox" checked={selectAll} onChange={this.handleSelectAll.bind(this)} ></input> 全选
+        <input type="checkbox" checked={bookList.length === count} onChange={this.handleSelectAll.bind(this)} ></input> 全选
         <button onClick={this.handleDeleteSelected.bind(this)}>删除选中的</button>
         {bookListDom}
         <div>总价：{totalPrice}元，总数：{totalCount}</div>
@@ -128,9 +107,9 @@ class MyBook extends Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state.bookList)
   return {
-    bookList: state.bookList
+    bookList: state.bookList,
+    a: []
   }
 }
 

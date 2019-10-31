@@ -31,7 +31,7 @@ export default new Vuex.Store({
         }
       })
     },
-    updateMyBook({ dispatch }, payload) {
+    updateMyBook({ }, payload) {
       Api.updateMyBook({ myBookNew: payload.myBook }).then(res => {
         if (res.code === 200) {
         }

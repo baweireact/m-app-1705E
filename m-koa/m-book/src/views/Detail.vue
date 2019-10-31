@@ -5,9 +5,7 @@
       <button v-if="detail.is_in_my_book">已收藏</button>
       <button v-else @click="handleAdd(detail)">收藏</button>
     </div>
-    <div>
-      {{detail.summary}}
-    </div>
+    <div>{{detail.summary}}</div>
   </div>
 </template>
 
@@ -22,11 +20,16 @@ export default {
   },
   methods: {
     handleAdd(book) {
+      if (!localStorage.getItem("username")) {
+        this.$router.push("/login");
+      }
+      book.count = 1;
+      book.checked = true;
       Api.add({ book }).then(res => {
         if (res.code === 200) {
-          this.detail.is_in_my_book = true
+          this.detail.is_in_my_book = true;
         }
-      })
+      });
     }
   },
   mounted() {

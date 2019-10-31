@@ -27,6 +27,11 @@ export default {
   },
   methods: {
     handleAdd(book) {
+      if (!localStorage.getItem('username')) {
+        this.$router.push('/login')
+      }
+      book.count = 1
+      book.checked = true
       Api.add({book}).then(res => {
         if (res.code === 200) {
           this.$store.dispatch({ type: 'getList' })

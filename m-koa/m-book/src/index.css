@@ -1,3 +1,4 @@
+.m-user{position: absolute;top: 10px;right: 10px;}
 .m-nav-item{margin: 0 5px;cursor: pointer;}
 .m-nav-item.active{color: red;}
 .m-nav-item.router-link-active{color: red;}
@@ -6,6 +7,7 @@
 .m-list-item-img{width: 100%;}
 .m-list-item-img[lazy=loading]{margin: auto; width: 40px;height: 40px;}
 .m-list-item-info{flex:1}
+
 
 
 

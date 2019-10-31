@@ -24,7 +24,7 @@ const server = http.createServer((req, res) => {
     res.writeHead(200, { 'Content-Type': 'text/html' })
     const home = fs.readFileSync('./index.html')   //读文件
     res.end(home)
-  } else if (req.url === '/banner01') {   //图片
+  } else if (req.url === '/banner01') { //图片
     //res.writeHead(200, { 'Content-Type': 'image/jpg' })
     const banner01 = fs.readFileSync('./images/banner01.jpg')  //读图片
     res.end(banner01)
@@ -116,7 +116,7 @@ const server = http.createServer((req, res) => {
         message: '添加成功'
       }))
     })
-  } else if (pathname === '/api/detail') {   //详情
+  } else if (pathname === '/api/detail') {  //详情
     let { id } = url.parse(req.url, true).query
     let detail
     bookMallData.forEach(listItem => {
@@ -155,7 +155,7 @@ const server = http.createServer((req, res) => {
         message: '删除成功'
       }))
     })
-  } else if (pathname === '/api/update') {
+  } else if (pathname === '/api/update') {  //更新
     let body = ''
     req.on('data', (chunk) => {
       body += chunk

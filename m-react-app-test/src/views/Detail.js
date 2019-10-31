@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import Api from '../api'
 
 const Detail = (props) => {
-  const [ detail, setDetail ] = useState({})
+  const [detail, setDetail] = useState({})
 
   const handleAdd = (item) => {
     let { bookList } = props
@@ -12,7 +12,7 @@ const Detail = (props) => {
     item.count = 1
     bookListClone.push(item)
     props.setState('bookList', bookListClone)
-    Api.add({item}).then(res => {
+    Api.add({ item }).then(res => {
       if (res.data.code === 200) {
 
       }
@@ -38,12 +38,18 @@ const Detail = (props) => {
 
   return (
     <div>
-      <img src={detail.avatar} alt={detail.title}></img>,价格：{detail.price}元
-      {
+      <img src={detail.avatar} alt={detail.title}></img>
+      
+      <div>价格：{detail.price}元
+        {
           bookList.find(book => book.id === detail.id)
-          ? <button>已收藏</button>
-          : <button onClick={handleAdd.bind(this, detail)}>收藏</button>
+            ? <button>已收藏</button>
+            : <button onClick={handleAdd.bind(this, detail)}>收藏</button>
         }
+      </div>
+      <div>作者：{detail.author}</div>
+      <div>分数：{detail.score}</div>
+      <div>简介：{detail.summary}</div>
     </div>
   )
 }

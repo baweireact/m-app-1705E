@@ -15,14 +15,19 @@ code {
 .m-nav-item {margin: 5px;cursor: pointer;}
 .m-nav-item.active{color: red;}
 .m-list-item{display: flex;margin: 5px;}
-.m-list-img{width: 112px;height: 150px;}
+.m-list-img{position: absolute; width: 112px;height: 150px;}
+.m-loading-img{position: relative; width: 112px;height: 150px;background:#dddddd;}
+.m-loading-img::before{display: inline-block;position: absolute; content: "";top: calc(50% - 19px);left: calc(50% - 19px); width: 38px;height: 38px; animation: loading 0.5s linear infinite;transform-origin:center center; background-image: url(./images/loading.png);background-size: 100% 100%;}   /*animation: loading 0.5s linear infinite;*/
 .m-list-info{position: relative; flex:1;margin: 0 0 0 5px; padding: 5px;border-bottom: 1px solid #dddddd;}
 .m-list-title{font-size: 20px;font-weight: bold;}
 .m-list-price{margin: 10px; font-size: 26px;color: red;font-weight: bold;}
 .m-list-btn-wrap{position: absolute; bottom: 20px;right: 10px;}
-.m-book-detail-btn{display: inline-block;margin: 5px; width: 120px;height: 40px;background: rgb(141, 5, 5);color: #ffffff;text-align: center;line-height: 40px;cursor: pointer;}
+.m-book-detail-btn{display: inline-block;margin: 5px; width: 80px;height: 40px;background: rgb(141, 5, 5);color: #ffffff;text-align: center;line-height: 40px;cursor: pointer;}
 .m-book-detail-btn:hover{opacity: 0.8;}
-.m-book-disable-btn{display: inline-block;margin: 5px; width: 120px;height: 40px;background:#dddddd;;color: #333333;;text-align: center;line-height: 40px;}
+.m-book-disable-btn{display: inline-block;margin: 5px; width: 80px;height: 40px;background:#dddddd;;color: #333333;;text-align: center;line-height: 40px;}
 
-
+@keyframes loading {
+  from {transform: rotate(0deg); }
+  to { transform: rotate(359deg);}
+}
 

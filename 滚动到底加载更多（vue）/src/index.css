@@ -1,0 +1,8 @@
+.m-wrap{position: absolute;top: 0;left: 0;right: 0;bottom: 0;overflow-y: auto;}
+.m-list-item{display: flex;margin: 10px;}
+.m-list-item-img{width: 100px;}
+.m-list-item-info{flex:1;margin: 0 0 0 5px; padding: 10px;border-bottom: 1px solid #dddddd;}
+.m-end{line-height: 50px;text-align: center;color: #dddddd;}
+
+
+

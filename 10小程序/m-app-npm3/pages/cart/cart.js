@@ -32,7 +32,7 @@ Page({
    */
   onShow: function () {
     wx.request({
-      url: `${host}/api/get_book_list`,
+      url: `${host}/api/my_book`,
       success: (res) => {
         if (res.data.code === 200) {
           let myBook = res.data.data
@@ -42,7 +42,7 @@ Page({
           this.total(myBook)
           let count = myBook.filter(item => item.checked).length
           this.setData({
-            selectAll: myBook.length === count
+            selectAll: myBook.length === count && myBook.length > 0
           })
           handleSetTabBarBadge(myBook.length)
         }
@@ -63,7 +63,7 @@ Page({
     this.handleUpdate(myBook)
     let count = myBook.filter(item => item.checked).length
     this.setData({
-      selectAll: myBook.length === count
+      selectAll: myBook.length === count && myBook.length > 0
     })
   },
 
@@ -127,7 +127,7 @@ Page({
     wx.request({
       url: `${host}/api/update`,
       data: {
-        bookListNew: myBook
+        myBookNew: myBook
       },
       method: 'post',
       success: (res) => {

@@ -3,6 +3,7 @@ const Router = require('koa-router')
 const bodyParser = require('koa-bodyparser')
 const cors = require('koa2-cors')
 const fs = require('fs')
+const static = require('koa-static')
 const { bookNavData, bookMallData } = require('./data.js')
 const { queryPromise } = require('./mysqlQuery')
 
@@ -203,6 +204,11 @@ app.use(cors())
 
 //解析post请求
 app.use(bodyParser())
+
+//静态资源
+//app.use(static('public'))
+app.use(static(__dirname + '/public'))
+
 
 //日志
 app.use(async (ctx, next) => {

@@ -37,7 +37,7 @@ App({
   globalData: {
     userInfo: null,
     //host: 'http://192.168.0.104:3000',
-    host: 'http://169.254.188.109:3000',
+    host: 'http://169.254.196.70:83',
     handleSetTabBarBadge: (text) => {
       if (text > 0) {
         wx.setTabBarBadge({

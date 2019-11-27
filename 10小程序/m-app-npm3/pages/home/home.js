@@ -114,7 +114,7 @@ Page({
     })
 
     wx.request({
-      url: `${host}/api/get_book_list`,
+      url: `${host}/api/my_book`,
       success: (res) => {
         if (res.data.code === 200) {
           handleSetTabBarBadge(res.data.data.length)

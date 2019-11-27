@@ -35,7 +35,7 @@ Page({
     wx.request({
       url: `${host}/api/add`,
       data: {
-        item
+        book: item
       },
       method: "post",
       success: (res) => {
